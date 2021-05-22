@@ -166,6 +166,26 @@ svg{
   border-color: rgb(255, 203, 30);
 }
 
+/*Login*/
+.login-form{
+  width: 30%;
+  margin-top: 20px;
+}
+.login-form label{
+  color: white;
+}
+.login-form button{
+  border-color: white;
+  color: white;
+}
+.login-form button:hover{
+  border-color:rgb(255, 203, 30);
+  color: rgb(255, 203, 30);
+  background-color: black;
+}
+
+
+
 
 /* canvas{
   min-width: 1000px;

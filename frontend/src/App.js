@@ -6,6 +6,7 @@ import Home from "./components/pages/Home";
 import Mentorship from "./components/pages/Mentorship/Mentorship";
 import Mentors from "./components/pages/Mentorship/Mentors";
 import Mentees from "./components/pages/Mentorship/Mentees";
+import Login from "./components/pages/Login";
 import './App.css';
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <Route path='/mentorship' component={Mentorship} />
               <Route path='/mentors' component={Mentors} />
               <Route path='/mentees' component={Mentees} />
+              <Route path='/login' component={Login} />
               {/* <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
               <Route path='/reset/:id' component={ResetPassword} /> */}

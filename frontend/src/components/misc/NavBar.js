@@ -2,7 +2,7 @@ import React from 'react';
 //import { Link } from "react-router-dom";
 //import Routes from "../pages/Routes";
 import {Nav, Navbar, Form, FormControl, Button} from 'react-bootstrap'
-import rose from "../../images/rose5.jpeg";
+import rose from "../../images/rose7.jpeg";
 
 export default function NavBar() {
 return (
