@@ -1,11 +1,12 @@
 import React from 'react';
-import rose from "../../images/rose7.jpeg";
-import mentor from "../../images/mentor.svg";
-import user from "../../images/user.svg";
-import tree from "../../images/tree.svg";
-import chat from "../../images/chat.svg";
+// import rose from "../../images/rose7.jpeg";
+import rose from "../../../images/rose7.jpeg";
+import mentor from "../../../images/mentor.svg";
+import user from "../../../images/user.svg";
+import tree from "../../../images/tree.svg";
+import chat from "../../../images/chat.svg";
 import Button from "react-bootstrap/Button";
-import NavBar from "../misc/NavBar.js";
+import NavBar from "../../misc/NavBar.js";
 import {useHistory} from 'react-router-dom';
 
 export default function Mentorship() {

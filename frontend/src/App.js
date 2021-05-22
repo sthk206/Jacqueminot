@@ -3,9 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from "./components/pages/Home";
-import Mentorship from "./components/pages/Mentorship";
-import Mentors from "./components/pages/Mentors";
-import Mentees from "./components/pages/Mentees";
+import Mentorship from "./components/pages/Mentorship/Mentorship";
+import Mentors from "./components/pages/Mentorship/Mentors";
+import Mentees from "./components/pages/Mentorship/Mentees";
 import './App.css';
 function App() {
   return (
