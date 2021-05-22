@@ -98,18 +98,38 @@ h1.title{
   margin: 0 20px 0 20px;
   transition: 0.5s;
   border-color: black;
-} 
-.home-button:hover{
-  background-color: rgb(255, 203, 30);
-  border-color: #ffffff;
 }
+svg{
+  transition: 0.2s;
+}
+
+
+.home-button:hover svg, 
+.home-button:hover{
+  fill: rgb(255, 203, 30); /*svg color change on button hover*/
+}
+.home-button:hover{
+  background-color: black;
+  border-color: rgb(255, 203, 30);
+  color: rgb(255, 203, 30);
+}
+
+
 .home-button:focus{
   background-color: #420000;
-  border-color: white;
+  border-color: rgb(255, 203, 30);
+}
+.home-button:active{
+  /* background-color: #420000; */
+  color: rgb(255, 203, 30);
+}
+.home-button p{
+  margin-top: 10px;
 }
 .box img{
   margin: 10px;
 }
+
 
 /* NavBar */
 .navbar{
@@ -145,3 +165,10 @@ h1.title{
   background-color: #420000;
   border-color: rgb(255, 203, 30);
 }
+
+
+/* canvas{
+  min-width: 1000px;
+  width: 1000px;
+  height: 3000px;
+} */
