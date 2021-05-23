@@ -44,9 +44,12 @@ return (
                 <Form.Control type="password" placeholder="Password" />
             </Form.Group>
 
-            <Button variant="outline-dark" type="submit">
-                Submit
+            <Button variant="outline-dark">
+                <a href="/" class="homelink"> 
+                    Submit
+                </a>
             </Button>
+
             <a href="/register">
                 Don't have an account? Sign up
             </a>

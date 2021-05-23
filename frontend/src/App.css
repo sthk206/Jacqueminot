@@ -191,6 +191,12 @@ svg{
   margin-top: 6px;
 }
 
+.login-form a.homelink{
+  color: white;
+  float: right;
+  margin-top: 0px;
+}
+
 /*Register*/
 .register-form{
   width: 40%;
@@ -217,6 +223,40 @@ svg{
   float: right;
   margin-top: 6px;
 }
+
+.register-form a.link{
+  color: white;
+  float: right;
+  margin-top: 0px;
+}
+
+/*Register2*/
+.register2-form{
+  width: 40%;
+  margin-top: 20px;
+}
+
+.register2-form label{
+  color: white;
+}
+.register2-form button{
+  border-color: white;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+.register2-form button:hover{
+  border-color:rgb(255, 203, 30);
+  color: rgb(255, 203, 30);
+  background-color: black;
+}
+
+.register2-form a{
+  color: white;
+  float: right;
+  margin-top: 0px;
+}
+
 
 /* canvas{
   min-width: 1000px;

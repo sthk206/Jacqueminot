@@ -48,7 +48,9 @@ return (
             </Form.Group>
 
             <Button variant="outline-dark" type="Sign Up">
-                Sign Up
+                <a href="/Register2" class="link"> 
+                    Continue
+                </a>
             </Button>
             
             <a href="/login">

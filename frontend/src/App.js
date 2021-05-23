@@ -8,6 +8,7 @@ import Mentors from "./components/pages/Mentorship/Mentors";
 import Mentees from "./components/pages/Mentorship/Mentees";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
+import Register2 from "./components/pages/Register2";
 import Families from "./components/pages/Trees/Families";
 import Og from "./components/pages/Trees/Og";
 import Disney from "./components/pages/Trees/Disney";
@@ -38,6 +39,7 @@ function App() {
               <Route path='/messages' component={Messages} />
               <Route path='/profile' component={Profile} />
               <Route path='/editprofile' component={EditProfile} />
+              <Route path='/register2' component={Register2} />
               {/* <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
               <Route path='/reset/:id' component={ResetPassword} /> */}
