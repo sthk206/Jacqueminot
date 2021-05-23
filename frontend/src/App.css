@@ -168,7 +168,7 @@ svg{
 
 /*Login*/
 .login-form{
-  width: 30%;
+  width: 40%;
   margin-top: 20px;
 }
 .login-form label{
@@ -188,11 +188,35 @@ svg{
 .login-form a{
   color: white;
   float: right;
-  margin-top: 2px;
+  margin-top: 6px;
 }
 
+/*Register*/
+.register-form{
+  width: 40%;
+  margin-top: 20px;
+}
 
+.register-form label{
+  color: white;
+}
+.register-form button{
+  border-color: white;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+.register-form button:hover{
+  border-color:rgb(255, 203, 30);
+  color: rgb(255, 203, 30);
+  background-color: black;
+}
 
+.register-form a{
+  color: white;
+  float: right;
+  margin-top: 6px;
+}
 
 /* canvas{
   min-width: 1000px;

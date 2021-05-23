@@ -48,7 +48,7 @@ return (
                 Submit
             </Button>
             <a href="/register">
-                Register
+                Don't have an account? Sign up
             </a>
 
 
