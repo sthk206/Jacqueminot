@@ -31,7 +31,7 @@ return (
             <h1 className="title">Jacqueminot</h1>
         </div>
         <Form className="login-form">
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group controlId="login-email">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" />
                 {/* <Form.Text className="text-muted">
@@ -39,7 +39,7 @@ return (
                 </Form.Text> */}
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group controlId="login-password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" />
             </Form.Group>
