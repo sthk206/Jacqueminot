@@ -7,13 +7,36 @@ import { Form } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 
 export default function Register() {
+
+    const history = useHistory();
+
+    const moveOn = (e) => {
+        e.preventDefault();
+        console.log(e);
+
+        const temp = {
+            first: e.target[0].value,
+            last: e.target[1].value,
+            email: e.target[2].value,
+            password: e.target[3].value,
+            confirm: e.target[4].value,
+        }
+
+        console.log(temp);
+
+        history.push({
+            pathname: '/register2',
+            state: temp,
+        }); 
+    }
+
 return (
     <div className="home-container">
             <div className="home-box">
                 <img height="70" width="70" src={rose} alt=""/> 
                 <h1 className="title">JACQUEMINOT</h1>
             </div>
-        <Form className="register-form">
+        <Form className="register-form" onSubmit={moveOn}>
 
             <Form.Row>
                     <Form.Group as={Col} controlId="register-first">
@@ -46,10 +69,8 @@ return (
                 <Form.Control type="password" placeholder="Re-Enter password" /> 
             </Form.Group>
 
-            <Button variant="outline-dark" type="Sign Up">
-                <a href="/Register2" class="link"> 
+            <Button variant="outline-dark" type="submit">
                     CONTINUE
-                </a>
             </Button>
             
             <a href="/login">
