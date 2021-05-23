@@ -7,7 +7,7 @@ export default function Messages() {
 return (
     <div className="message-container">
         <NavBar/>
-        <h1 className="messages-title">sdf</h1>
+        <h1 className="messages-title">Brothers of Theta Tau</h1>
 
         <div className="messages-placard">
             <img width="150px" height="150px" src={filler} alt=""/>
