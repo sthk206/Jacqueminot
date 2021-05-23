@@ -7,6 +7,9 @@ import {useHistory} from 'react-router-dom';
 export default function Home() {
     const history = useHistory();
     const redirectMentorship = () => history.push('/mentorship');
+    const redirectTrees = () => history.push('/trees');
+    const redirectProfile = () => history.push('/profile');
+    const redirectMessages = () => history.push('/messages');
 return (
     // <div className="background">
     //     <h1>sdfjdslkf</h1>
@@ -31,7 +34,7 @@ return (
         </div>
 
         <div className="home-box">
-            <Button variant="dark" className="home-button">
+            <Button onClick={redirectProfile} variant="dark" className="home-button">
                 {/* <img height="50" width="50" src={user} alt=""/> */}
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="white" className="home-svg" viewBox="0 0 16 16">
                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -49,14 +52,14 @@ return (
                 </svg>
                 <p>Mentorship</p>
             </Button>
-            <Button variant="dark" className="home-button">
+            <Button onClick={redirectTrees} variant="dark" className="home-button">
                 {/* <img height="50" width="50" src={tree} alt=""/> */}
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="white" className="home-svg" viewBox="0 0 16 16">
                     <path d="M8.416.223a.5.5 0 0 0-.832 0l-3 4.5A.5.5 0 0 0 5 5.5h.098L3.076 8.735A.5.5 0 0 0 3.5 9.5h.191l-1.638 3.276a.5.5 0 0 0 .447.724H7V16h2v-2.5h4.5a.5.5 0 0 0 .447-.724L12.31 9.5h.191a.5.5 0 0 0 .424-.765L10.902 5.5H11a.5.5 0 0 0 .416-.777l-3-4.5z"/>
                 </svg>
                 <p>Family Trees</p>
             </Button>
-            <Button variant="dark" className="home-button">
+            <Button onClick={redirectMessages} variant="dark" className="home-button">
                 {/* <img height="50" width="50" src={chat} alt=""/> */}
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="white" className="home-svg" viewBox="0 0 16 16">
                     <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>

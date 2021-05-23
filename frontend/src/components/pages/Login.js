@@ -5,7 +5,7 @@ import NavBar from "../misc/NavBar.js";
 import {useHistory} from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 
-export default function Home() {
+export default function Login() {
     const history = useHistory();
     const redirectMentorship = () => history.push('/mentorship');
 return (
@@ -47,6 +47,12 @@ return (
             <Button variant="outline-dark" type="submit">
                 Submit
             </Button>
+            <a href="/register">
+                Register
+            </a>
+
+
+
         </Form>
 
     </div>
