@@ -25,14 +25,13 @@ return (
     //     </div>
     // </div>
     <div className="home-container">
-        <NavBar/>
         <div className="home-box">
             <img height="70" width="70" src={rose} alt=""/>
-            <h1 className="title">Jacqueminot</h1>
+            <h1 className="title">JACQUEMINOT</h1>
         </div>
         <Form className="login-form">
             <Form.Group controlId="login-email">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label>EMAIL ADDRESS</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" />
                 {/* <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
@@ -40,13 +39,13 @@ return (
             </Form.Group>
 
             <Form.Group controlId="login-password">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>PASSWORD</Form.Label>
                 <Form.Control type="password" placeholder="Password" />
             </Form.Group>
 
             <Button variant="outline-dark">
                 <a href="/" class="homelink"> 
-                    Submit
+                    SUBMIT
                 </a>
             </Button>
 

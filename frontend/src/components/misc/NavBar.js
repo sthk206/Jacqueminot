@@ -9,11 +9,11 @@ return (
     <>
       <Navbar fixed="top" variant="dark" className="navbar">
         <img height="40" width="40" src={rose} alt=""/>
-        <Navbar.Brand href="/">Jacqueminot</Navbar.Brand>
+        <Navbar.Brand href="/">JACQUEMINOT</Navbar.Brand>
         <Nav className="ml-auto">
-            <Nav.Link href="/profile">Profile</Nav.Link>
-            <Nav.Link href="/mentorship">Mentorship</Nav.Link>
-            <Nav.Link href="/trees">Family Trees</Nav.Link>
+            <Nav.Link href="/profile">PROFILE</Nav.Link>
+            <Nav.Link href="/mentorship">MENTORSHIP</Nav.Link>
+            <Nav.Link href="/trees">FAMILY TREES</Nav.Link>
         </Nav>
         {/* <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />

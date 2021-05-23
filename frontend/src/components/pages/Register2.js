@@ -10,15 +10,14 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 export default function Register2() {
 return (
     <div className="home-container">
-        <NavBar/>
-            <div className="home-box">
-                <img height="70" width="70" src={rose} alt=""/> 
-                <h1 className="title">Jacqueminot</h1>
-            </div>
+        <div className="home-box">
+            <img height="70" width="70" src={rose} alt=""/> 
+            <h1 className="title">JACQUEMINOT</h1>
+        </div>
         <Form className="register2-form">
             <Form.Row>
                 <Form.Group as={Col} controlId="register2-class">
-                    <Form.Label>Class</Form.Label>
+                    <Form.Label>CLASS</Form.Label>
                     <Form.Control as="select" defaultValue = "Select Class...">
                         <option disabled>Select Class...</option>
                         <option>Charter</option>
@@ -50,9 +49,7 @@ return (
                 
 
                 <Form.Group as={Col} controlId="register2-family">
-                    {/* <Form.Label>Family</Form.Label>
-                    <Form.Control type="family" placeholder="Enter Family Name" /> */}
-                    <Form.Label>Family</Form.Label>
+                    <Form.Label>FAMILY</Form.Label>
                     <Form.Control as="select" defaultValue="Select Family..."> 
                         <option disabled>Select Family...</option>
                         <option>OG</option>
@@ -66,7 +63,7 @@ return (
 
             <Form.Row>
                 <Form.Group as={Col} controlId="register2-major">
-                        <Form.Label>Major</Form.Label>
+                        <Form.Label>MAJOR</Form.Label>
                         <Form.Control as="select" defaultValue="Select Major...">
                             <option disabled>Select Major...</option>
                             <option>Aerospace Engineering</option>
@@ -84,7 +81,7 @@ return (
                         </Form.Control>
                 </Form.Group>
 
-                <Form.Group as = {Col} controlId="register2-year">
+                <Form.Group as={Col} controlId="register2-year">
                     <Form.Label>Year</Form.Label>
                     <Form.Control type="year" placeholder="Enter Graduation Year" />
                 </Form.Group>
@@ -92,12 +89,12 @@ return (
 
 
             <Form.Group controlId="register2-occupation">
-                <Form.Label>Current Occupation</Form.Label>
+                <Form.Label>CURRENT OCCUPATION</Form.Label>
                 <Form.Control as="textarea" rows={3} placeholder="Please describe your occupation(s): Student, Product Management, UI/UX Design, etc." />
             </Form.Group>
 
             <Form.Group controlId="register2-info">
-                <Form.Label>Additional Info</Form.Label>
+                <Form.Label>ADDITIONAL INFO</Form.Label>
                 <Form.Control as="textarea" rows={4} placeholder="Please tell us more about yourself!" /> 
             </Form.Group>
 
