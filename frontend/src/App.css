@@ -141,8 +141,8 @@ svg{
 
 
 /* NavBar */
-.navbar{
 
+.navbar{
   color: black;
   background-color: black;
 }
@@ -339,3 +339,141 @@ svg{
   width: 1000px;
   height: 3000px;
 } */
+
+/* Mentors */
+.mentor{
+  color: white;
+  align-self: baseline;
+  margin-left: 300px;
+  margin-bottom: 20px;
+}
+.mentor-container h1{
+  color: white;
+}
+.mentor-container{
+  display: flex;           /* establish flex container */
+  flex-direction: column;  /* make main axis vertical */
+  justify-content: baseline; /* center items vertically, in this case */
+  align-items: center;     /* center items horizontally, in this case */
+  padding-top: 156px;
+  min-height: 100vh;
+  max-width: 100vw;
+  margin: 0px;
+  background-color: black;
+}
+.mentor-placard{
+  margin: 20px 0;
+  width: 50%;
+  height: 220px;
+  /* height: 200px; */
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  color: white;
+}
+
+.mentor-placard img{
+  align-self: center;
+  justify-self: center;
+}
+.mentor-placard table{
+  width: 100%;
+}
+.mentor-button{
+  background-color: #420000;
+  color: white;
+  width: 150px;
+  height: 25%;
+  transition: 0.5s;
+  border-color: black;
+  margin-top: 15px;
+}
+.mentor-button p{
+  display: inline;
+  margin-left: 15px;
+}
+.mentor-button svg{
+  margin-bottom: 5px;
+}
+.mentor-button:hover svg, 
+.mentor-button:hover{
+  fill: rgb(255, 203, 30); /*svg color change on button hover*/
+}
+.mentor-button:hover{
+  background-color: black;
+  border-color: rgb(255, 203, 30);
+  color: rgb(255, 203, 30);
+}
+/* .mentor-button:focus{
+  background-color: #420000;
+  border-color: rgb(255, 203, 30);
+} */
+
+/* Messages */
+.message-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 10% auto;
+  padding-top: 56px;
+  justify-items: center;
+  /* ali */
+  padding-top: 156px;
+  min-height: 100vh;
+  max-width: 100vw;
+  margin: 0px;
+  background-color: black;
+
+}
+.messages-title{
+  grid-column-start: 1;
+  grid-column-end: 4;
+
+}
+
+.messages-placard{
+  margin: 20px 0;
+  width: 80%;
+  height: 450px;
+  /* height: 200px; */
+  border: 1px solid white;
+  display: grid;
+  grid-template-rows: 40% 60%;
+  color: white;
+  justify-items: center;
+  align-items: center;
+}
+
+.messages-span{
+  align-items: center;
+  justify-items: center;
+}
+.messages-placard table{
+  width: 100%;
+}
+.messages-button{
+  background-color: #420000;
+  color: white;
+  width: 150px;
+  height: 25%;
+  transition: 0.5s;
+  border-color: black;
+  margin-top: 15px;
+  position: relative;
+  margin-left: auto;
+}
+.messages-button p{
+  display: inline;
+  margin-left: 15px;
+}
+.messages-button svg{
+  margin-bottom: 5px;
+}
+.messages-button:hover svg, 
+.messages-button:hover{
+  fill: rgb(255, 203, 30); /*svg color change on button hover*/
+}
+.messages-button:hover{
+  background-color: black;
+  border-color: rgb(255, 203, 30);
+  color: rgb(255, 203, 30);
+}

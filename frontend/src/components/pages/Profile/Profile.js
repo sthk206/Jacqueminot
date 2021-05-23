@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from "../../misc/NavBar.js";
-import filler from "../../../images/filler.jpeg"
+import filler from "../../../images/filler.png"
 import Button from "react-bootstrap/Button";
 
 export default function Profile() {
@@ -26,31 +26,38 @@ return (
         </div>
         <div className="profile-about">
             <h2>About</h2>
-            <table cellspacing="0" cellpadding="0">
-                <tr>
-                    <td><em>Class:</em></td>
-                    <td>Sigma</td>
-                </tr>
-                <tr>
-                    <td><em>Major:</em></td>
-                    <td>Computer Science</td>
-                </tr>
-                <tr>
-                    <td><em>Graudation Year:</em></td>
-                    <td>2021</td>
-                </tr>
-                <tr>
-                    <td><em>Current Occupation:</em></td>
-                    <td>Student</td>
-                </tr>
-                <tr>
-                    <td><em>Family:</em></td>
-                    <td>Disney</td>
-                </tr>
-                <tr>
-                    <td><em>Additional Information</em></td>
+            <table cellSpacing="0" cellPadding="0">
+                <tbody>
 
-                </tr>
+                    <tr>
+                        <td><em>Class:</em></td>
+                        <td>Sigma</td>
+                    </tr>
+                    <tr>
+                        <td><em>Email:</em></td>
+                        <td>firstlast@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td><em>Major:</em></td>
+                        <td>Computer Science</td>
+                    </tr>
+                    <tr>
+                        <td><em>Graudation Year:</em></td>
+                        <td>2021</td>
+                    </tr>
+                    <tr>
+                        <td><em>Current Occupation:</em></td>
+                        <td>Student</td>
+                    </tr>
+                    <tr>
+                        <td><em>Family:</em></td>
+                        <td>Disney</td>
+                    </tr>
+                    <tr>
+                        <td><em>Additional Information:</em></td>
+
+                    </tr>
+                </tbody>
             </table>
             <p>
                 {/* <em>Class</em> : Sigma <br/>
