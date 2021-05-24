@@ -134,7 +134,7 @@ return (
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="register2-year">
-                    <Form.Label>Year</Form.Label>
+                    <Form.Label>YEAR</Form.Label>
                     <Form.Control type="year" placeholder="Enter Graduation Year" />
                 </Form.Group>
             </Form.Row>

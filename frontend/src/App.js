@@ -17,6 +17,7 @@ import Tna from "./components/pages/Trees/Tna";
 import Messages from "./components/pages/Message/Messages";
 import Profile from "./components/pages/Profile/Profile";
 import EditProfile from "./components/pages/Profile/EditProfile";
+import OtherProfile from "./components/pages/Profile/OtherProfile";
 
 import './App.css';
 function App() {
@@ -39,6 +40,7 @@ function App() {
               <Route path='/messages' component={Messages} />
               <Route path='/profile' component={Profile} />
               <Route path='/editprofile' component={EditProfile} />
+              <Route path='/otherProfile/:id' component={OtherProfile} />
               <Route path='/register2' component={Register2} />
               {/* <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />

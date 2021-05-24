@@ -48,7 +48,7 @@ return (
         <Form className="login-form" onSubmit={login}>
             <Form.Group controlId="login-email">
                 <Form.Label>EMAIL ADDRESS</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control type="email" placeholder="Enter Email" />
                 {/* <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
                 </Form.Text> */}
@@ -56,7 +56,7 @@ return (
 
             <Form.Group controlId="login-password">
                 <Form.Label>PASSWORD</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control type="password" placeholder="Enter Password" />
             </Form.Group>
 
             <Button variant="outline-dark" type="submit"> 

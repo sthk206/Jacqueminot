@@ -3,6 +3,7 @@ import NavBar from "../../misc/NavBar.js";
 import filler from "../../../images/filler.png"
 import {useHistory, useLocation} from 'react-router-dom';
 import Button from "react-bootstrap/Button";
+import { Form } from "react-bootstrap";
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
 const jwt = require('jsonwebtoken')
@@ -75,12 +76,16 @@ export default function Profile() {
           console.log(result);;
     } 
 
+    const changePass = () => {
+        
+    };
+
 return (
     <div className="grid-container">
         <NavBar/>
 
         <div className="profile-base center">
-            <img width="200px" height="200px" src={filler} alt=""/>
+            <img width="200px" height="200px" src={`http://localhost:5000/${user.pfp}`} alt=""/>
             <div className="grid center">
                 <h1>{user.first} {user.last}</h1>
                 {/* Job Title */}
@@ -111,7 +116,7 @@ return (
         </div>
         <div className="profile-about">
 
-            <h2>About | <span onClick={edit}>Edit</span></h2>
+            <h2>About</h2>
             <table cellSpacing="0" cellPadding="0">
                 <tbody>
 
@@ -148,16 +153,20 @@ return (
                 {user.additional}
             </p>
 
-        </div>
-        <div className="profile-links">
-            <a href={user.fb} target="_blank" rel="noopener noreferrer">
-                <Button type='submit'>Facebook</Button>
-            </a>
+            <div className="profile-links">
+                <a href={user.fb} target="_blank" rel="noopener noreferrer">
+                    <Button>Facebook</Button>
+                </a>
 
-            <a href={user.linkedin} target="_blank" rel="noopener noreferrer">
-                <Button type='submit'>LinkedIn</Button>
-            </a>
+                <a href={user.linkedin} target="_blank" rel="noopener noreferrer">
+                    <Button>LinkedIn</Button>
+                </a>
+
+                <span onClick={edit}><Button>Edit Profile</Button></span>
+            </div>
+
         </div>
+        
 
 
 
