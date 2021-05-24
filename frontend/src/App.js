@@ -18,10 +18,11 @@ import Messages from "./components/pages/Message/Messages";
 import Profile from "./components/pages/Profile/Profile";
 import EditProfile from "./components/pages/Profile/EditProfile";
 import OtherProfile from "./components/pages/Profile/OtherProfile";
+import ForgotPassword from "./components/auth/ForgotPassword";
 
 import './App.css';
 function App() {
-  return (
+  return ( 
     <>
       <BrowserRouter>
         {/* <UserContext.Provider value={{userData, setUserData}}> */}
@@ -42,6 +43,7 @@ function App() {
               <Route path='/editprofile' component={EditProfile} />
               <Route path='/otherProfile/:id' component={OtherProfile} />
               <Route path='/register2' component={Register2} />
+              <Route path='/fp' component={ForgotPassword} />
               {/* <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
               <Route path='/reset/:id' component={ResetPassword} /> */}

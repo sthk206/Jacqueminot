@@ -16,7 +16,8 @@ export default function Home() {
     const redirectMessages = () => history.push('/messages');
 
     useEffect( () => {
-        let token = localStorage.getItem('token'); 
+        let token = localStorage.getItem('token');
+        console.log(token); 
         authenticate(token, history);
     }, []);
 

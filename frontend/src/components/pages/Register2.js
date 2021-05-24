@@ -6,6 +6,7 @@ import {useHistory, useLocation} from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
+const api = process.env.REACT_APP_API_URL
 
 export default function Register2() {
 
@@ -28,7 +29,7 @@ export default function Register2() {
         const {first, last, email, password, confirm} = location.state;
         
       
-        const result = await fetch('http://localhost:5000/fullUser/add', {
+        const result = await fetch(`{api}/fullUser/add`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

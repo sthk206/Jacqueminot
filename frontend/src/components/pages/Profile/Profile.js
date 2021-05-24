@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 import { authenticate, getUser } from '../../auth/auth.js'
+const api = process.env.REACT_APP_API_URL;
 
 export default function Profile() {
     const [user, setUser] = useState({});
@@ -14,15 +15,15 @@ export default function Profile() {
 
     useEffect( () => {
         let token = localStorage.getItem('token');
-        authenticate(token, history);
-        getUser(token).then(res => {setUser(res)});
+        let auth = authenticate(token, history);
+        if(auth) {getUser(token).then(res => {setUser(res)});};
     }, [])
 
 
 
     const updateBeMentee = async (e) => {
         console.log(e);
-        const result = await fetch('http://localhost:5000/fullUser/update', {
+        const result = await fetch(`${api}/fullUser/update`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -50,7 +51,7 @@ export default function Profile() {
             "beMentor":e
         } 
         console.log(body);
-        const result = await fetch('http://localhost:5000/fullUser/update', {
+        const result = await fetch(`${api}/fullUser/update`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

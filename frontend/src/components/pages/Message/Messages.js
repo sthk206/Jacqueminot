@@ -3,18 +3,17 @@ import NavBar from "../../misc/NavBar.js";
 import filler from "../../../images/filler.png"
 import Button from "react-bootstrap/Button"
 import {useHistory, useLocation} from 'react-router-dom';
-import { authenticate, getUser } from '../../auth/auth.js'
+import { authenticate, getUser } from '../../auth/auth.js';
+const api = process.env.REACT_APP_API_URL;
 
 export default function Messages() {
     const [brothers, setBrothers] = useState([]);
     const [id, setId] = useState("");
     const history = useHistory();
 
-    const findBrothers = async (token) => {
-      
-        const tempUser = await getUser(token);
+    const findBrothers = async (id) => {
 
-        const result = await fetch(`http://localhost:5000/fullUser/`, {
+        const result = await fetch(`${api}/fullUser/`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -22,15 +21,14 @@ export default function Messages() {
         }).then( res => res.json() );
       
         console.log(result);
-        setId(tempUser.id);
+        setId(id);
         setBrothers(result);
-      
     }
 
     useEffect(() => {
         let token = localStorage.getItem('token');
-        authenticate(token, history);
-        findBrothers(token);
+        let auth = authenticate(token, history);
+        if(auth) {getUser(token).then(res => {findBrothers(res._id)});}
     }, [])
 
     const createBrother = (brother) => (
