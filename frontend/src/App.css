@@ -414,12 +414,16 @@ form{
 .mentor-placard{
   margin: 20px 0;
   width: 50%;
-  height: 220px;
+  height: 280px;
   /* height: 200px; */
   border: 1px solid white;
   display: grid;
   grid-template-columns: 30% 70%;
   color: white;
+}
+.center2{
+    margin: auto auto auto 20px;
+  /* justify-content: center; */
 }
 
 .mentor-placard img{
@@ -432,7 +436,7 @@ form{
 .mentor-button{
   background-color: #420000;
   color: white;
-  width: 69%;
+  width: 260px;
   height: 25%;
   transition: 0.5s;
   border-color: black;
@@ -489,7 +493,7 @@ form{
 
 .messages-placard{
   width: 85%;
-  height: 90%;
+  height: 80%;
   /* height: 200px; */
   border: 1px solid white;
   display: grid;

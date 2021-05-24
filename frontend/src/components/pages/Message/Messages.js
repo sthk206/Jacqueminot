@@ -11,7 +11,7 @@ return (
         <div className="message-container">
 
             <div className="messages-placard">
-                <img width="200px" height="200px" src={filler} alt=""/>
+                <img width="150px" height="150px" src={filler} alt=""/>
                 <div className="messages-div">
                     <h1>Brother First</h1>
                     <table cellSpacing="0" cellPadding="0">
@@ -39,7 +39,7 @@ return (
                 </div>
             </div>
             <div className="messages-placard">
-                <img width="200px" height="200px" src={filler} alt=""/>
+                <img width="150px" height="150px" src={filler} alt=""/>
                 <div className="messages-div">
                     <h1>Brother First Last</h1>
                     <table cellSpacing="0" cellPadding="0">
@@ -67,7 +67,7 @@ return (
                 </div>
             </div>
             <div className="messages-placard">
-                <img width="200px" height="200px" src={filler} alt=""/>
+                <img width="150px" height="150px" src={filler} alt=""/>
                 <div className="messages-div">
                     <h1>Brother First Last</h1>
                     <table cellSpacing="0" cellPadding="0">
@@ -95,7 +95,7 @@ return (
                 </div>
             </div>
             <div className="messages-placard">
-                <img width="200px" height="200px" src={filler} alt=""/>
+                <img width="150px" height="150px" src={filler} alt=""/>
                 <div className="messages-div">
                     <h1>Brother First Last</h1>
                     <table cellSpacing="0" cellPadding="0">

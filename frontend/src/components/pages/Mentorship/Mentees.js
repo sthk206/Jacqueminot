@@ -10,7 +10,7 @@ return (
         <h1 className="mentor">Mentees</h1>
         <div className="mentor-placard">
             <img width="150px" height="150px" src={filler} alt=""/>
-            <span>
+            <div className="center2">
                 <h1>Brother First Last</h1>
                 <table cellSpacing="0" cellPadding="0">
                     <tbody>
@@ -34,7 +34,7 @@ return (
                     </svg>
                     <p>Message</p>
                 </Button>
-            </span>
+            </div>
         </div>
 
 
