@@ -11,6 +11,7 @@ export default function Register2() {
 
     const history = useHistory();
     const location = useLocation();
+    const redirectRegister = () => history.push('/register');
 
     const register = async (e) => {
         e.preventDefault();
@@ -21,7 +22,8 @@ export default function Register2() {
             major: e.target[2].value,
             year: e.target[3].value,
             occupation: e.target[4].value,
-            additional: e.target[5].value,
+            organization: e.target[5].value,
+            additional: e.target[6].value,
         }
         const {first, last, email, password, confirm} = location.state;
         
@@ -40,6 +42,7 @@ export default function Register2() {
             year: temp.year,
             major: temp.major,
             occupation: temp.occupation,
+            organization: temp.organization,
             description: temp.additional,
           })
         }).then( res => res.json() );
@@ -138,7 +141,11 @@ return (
 
             <Form.Group controlId="register2-occupation">
                 <Form.Label>CURRENT OCCUPATION</Form.Label>
-                <Form.Control as="textarea" rows={3} placeholder="Please describe your occupation(s): Student, Product Management, UI/UX Design, etc." />
+                <Form.Control type="text" placeholder="Student, Product Management, UI/UX Design, etc." />
+            </Form.Group>
+            <Form.Group controlId="register2-organization">
+                <Form.Label>Organization</Form.Label>
+                <Form.Control type="text" placeholder="UC San Diego, Amazon, Google, etc." />
             </Form.Group>
 
             <Form.Group controlId="register2-info">
@@ -146,8 +153,20 @@ return (
                 <Form.Control as="textarea" rows={4} placeholder="Please tell us more about yourself!" /> 
             </Form.Group>
 
+            <Form.Group controlId="register2-facebook">
+                <Form.Label>FACEBOOK PROFILE</Form.Label>
+                <Form.Control type="text" placeholder="https://www.facebook.com/xxxxxxx" />
+            </Form.Group>
+            <Form.Group controlId="register2-linkedin">
+                <Form.Label>LINKEDIN LINK</Form.Label>
+                <Form.Control type="text" placeholder="https://www.linkedin.com/xxxxxxx" />
+            </Form.Group>
+
             <Button variant="outline-dark" type='submit'>
                 Sign Up
+            </Button>
+            <Button variant="outline-dark" onClick={redirectRegister}>
+                Back
             </Button>
 
         </Form>

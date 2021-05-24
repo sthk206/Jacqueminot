@@ -14,6 +14,7 @@ return (
             <Nav.Link href="/profile">PROFILE</Nav.Link>
             <Nav.Link href="/mentorship">MENTORSHIP</Nav.Link>
             <Nav.Link href="/trees">FAMILY TREES</Nav.Link>
+            <Nav.Link href="/messages">MESSAGE</Nav.Link>
         </Nav>
         {/* <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />

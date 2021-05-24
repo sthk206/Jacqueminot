@@ -90,10 +90,11 @@ h1.title{
   flex-direction: column;  /* make main axis vertical */
   justify-content: center; /* center items vertically, in this case */
   align-items: center;     /* center items horizontally, in this case */
-  height: 100vh;
+  min-height: 100vh;
   max-width: 100vw;
   margin: 0px;
   background-color: black;
+  padding: 30px 0;
 }
 
 .home-box {
@@ -277,6 +278,7 @@ form{
   color: white;
   align-items: center;
   justify-content: center;
+  margin-right: 10px;
 }
 .register2-form button:hover{
   border-color:rgb(255, 203, 30);
@@ -338,10 +340,17 @@ form{
   padding: 0px 50px 0 30px;
   margin-bottom: 0;
 }
-.profile-about p{
-  margin-left: 30px;
+.profile-about h2{
+  display: inline;
+}
+.profile-about a{
+  color: white;
+  text-decoration: underline;
+  margin-left: 15px;
+  font-size: 80%;
 }
 .add-info{
+  margin-left: 30px;
   line-height: 1.5;
 
 }

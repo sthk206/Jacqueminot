@@ -41,12 +41,12 @@ return (
             <Form.Row>
                     <Form.Group as={Col} controlId="register-first">
                         <Form.Label>FIRST NAME</Form.Label>
-                        <Form.Control type="firstName" placeholder="Enter First Name" />
+                        <Form.Control type="text" placeholder="Enter First Name" />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="register-last">
                             <Form.Label>LAST NAME</Form.Label>
-                            <Form.Control type="lastName" placeholder="Enter Last Name" />
+                            <Form.Control type="text" placeholder="Enter Last Name" />
                     </Form.Group>
             </Form.Row>
            
