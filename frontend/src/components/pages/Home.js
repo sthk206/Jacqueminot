@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import NavBar from "../misc/NavBar.js";
 import HomeNavBar from "../misc/HomeNavBar.js";
 import {useHistory, useLocation} from 'react-router-dom';
+import { authenticate } from '../auth/auth.js';
+
 
 export default function Home() {
     const history = useHistory();
@@ -14,9 +16,8 @@ export default function Home() {
     const redirectMessages = () => history.push('/messages');
 
     useEffect( () => {
-        if(!localStorage.getItem('token')){
-            history.push('/login');
-        }
+        let token = localStorage.getItem('token'); 
+        authenticate(token, history);
     }, []);
 
 return (

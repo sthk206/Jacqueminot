@@ -35,15 +35,16 @@ export default function Register2() {
           },
           body: JSON.stringify({
             username: email,
-            password: password,
-            name: first + " " + last,
+            password,
+            first,
+            last,
             clss: temp.clss,
             fam: temp.fam,
             year: temp.year,
             major: temp.major,
             occupation: temp.occupation,
             organization: temp.organization,
-            description: temp.additional,
+            additional: temp.additional,
           })
         }).then( res => res.json() );
       
@@ -133,7 +134,7 @@ return (
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="register2-year">
-                    <Form.Label>Year</Form.Label>
+                    <Form.Label>YEAR</Form.Label>
                     <Form.Control type="year" placeholder="Enter Graduation Year" />
                 </Form.Group>
             </Form.Row>

@@ -3,22 +3,36 @@ import NavBar from "../../misc/NavBar.js";
 import filler from "../../../images/filler.png"
 import {useHistory, useLocation} from 'react-router-dom';
 import Button from "react-bootstrap/Button";
-import { Form } from "react-bootstrap";
-import BootstrapSwitchButton from 'bootstrap-switch-button-react';
-import { authenticate, getUser } from '../../auth/auth.js'
+import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+
+const jwt = require('jsonwebtoken')
+const JWT_SECRET = 'lkjsdfku4@#$@#o7w59 pajfclvkas%$#ur3daFDUA'
 
 export default function Profile() {
     const [user, setUser] = useState({});
     const history = useHistory();
 
+    //get user data function
+    const getUserdata = async () => {
 
-    useEffect( () => {
-        let token = localStorage.getItem('token');
-        authenticate(token, history);
-        getUser(token).then(res => {setUser(res)});
+        const tempUser = jwt.verify(localStorage.getItem('token'), JWT_SECRET);
+        
+        const result = await fetch(`http://localhost:5000/fullUser/${tempUser.id}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then( res => res.json() );
+
+        console.log(result);
+        setUser(result);
+      
+    }
+
+
+    useEffect(() => {
+        getUserdata();
     }, [])
-
-
 
     const updateBeMentee = async (e) => {
         console.log(e);
@@ -61,16 +75,12 @@ export default function Profile() {
           console.log(result);;
     } 
 
-    const changePass = () => {
-        
-    };
-
 return (
     <div className="grid-container">
         <NavBar/>
 
         <div className="profile-base center">
-            <img width="200px" height="200px" src={`http://localhost:5000/${user.pfp}`} alt=""/>
+            <img width="200px" height="200px" src={filler} alt=""/>
             <div className="grid center">
                 <h1>{user.first} {user.last}</h1>
                 {/* Job Title */}
