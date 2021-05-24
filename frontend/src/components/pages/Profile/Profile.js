@@ -44,12 +44,12 @@ return (
             <div className="grid center">
                 <h1>{user.name}</h1>
                 {/* Job Title */}
-                <h6> {user.occupation} at UC San Diego</h6>
+                <h6> {user.occupation} at {user.org}</h6>
             </div>
             <div className="center">
-                <h5>Mentor Status: </h5>
+                <h5>Looking for Mentor: </h5>
                 <BootstrapSwitchButton
-                    checked={user.mentor}
+                    checked={user.beMentee}
                     onlabel=' '
                     onstyle='success'
                     offlabel=' '
@@ -57,9 +57,9 @@ return (
                 />
             </div>
             <div className="center">
-                <h5>Mentee Status: </h5>
+                <h5>Looking for Mentee</h5>
                 <BootstrapSwitchButton
-                    checked={user.mentee}
+                    checked={user.beMentor}
                     onlabel=' '
                     onstyle='success'
                     offlabel=' '
@@ -108,8 +108,13 @@ return (
 
         </div>
         <div className="profile-links">
-            <Button>LinkedIn</Button>
-            <Button>Facebook</Button>
+            <a href={user.fb} target="_blank" rel="noopener noreferrer">
+                <Button type='submit'>Facebook</Button>
+            </a>
+
+            <a href={user.linkedin} target="_blank" rel="noopener noreferrer">
+                <Button type='submit'>LinkedIn</Button>
+            </a>
         </div>
 
 
