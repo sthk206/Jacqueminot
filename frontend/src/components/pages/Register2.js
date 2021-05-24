@@ -37,6 +37,8 @@ export default function Register2() {
             name: first + " " + last,
             clss: temp.clss,
             fam: temp.fam,
+            year: temp.year,
+            major: temp.major,
             occupation: temp.occupation,
             description: temp.additional,
           })
