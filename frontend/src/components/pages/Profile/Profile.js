@@ -103,7 +103,8 @@ return (
             </div>
         </div>
         <div className="profile-about">
-            <h2>About</h2>
+
+            <h2>About | <a href="/editprofile">edit</a></h2>
             <table cellSpacing="0" cellPadding="0">
                 <tbody>
 
