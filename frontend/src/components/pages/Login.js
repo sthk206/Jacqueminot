@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import NavBar from "../misc/NavBar.js";
 import {useHistory} from 'react-router-dom';
 import { Form } from 'react-bootstrap';
+const api = process.env.REACT_APP_API_URL
 
 export default function Login() {
     const history = useHistory();
@@ -15,7 +16,7 @@ export default function Login() {
         const username = e.target[0].value;
         const password = e.target[1].value;
       
-        const result = await fetch('http://localhost:5000/fullUser/login', {
+        const result = await fetch(`${api}/fullUser/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -60,15 +61,12 @@ return (
             </Form.Group>
 
             <Button variant="outline-dark" type="submit"> 
-                SUBMIT
+                LOGIN
             </Button>
 
             <a href="/register">
                 Don't have an account? Sign up
             </a>
-
-
-
         </Form>
 
     </div>

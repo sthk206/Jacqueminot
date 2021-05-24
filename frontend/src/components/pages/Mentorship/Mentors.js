@@ -2,20 +2,19 @@ import React, {useEffect, useState} from 'react';
 import NavBar from "../../misc/NavBar.js";
 import filler from "../../../images/filler.png"
 import Button from "react-bootstrap/Button"
-const jwt = require('jsonwebtoken')
-const JWT_SECRET = 'lkjsdfku4@#$@#o7w59 pajfclvkas%$#ur3daFDUA'
+import { authenticate, getUser } from '../../auth/auth.js'
+import {useHistory, useLocation} from 'react-router-dom';
+const api = process.env.REACT_APP_API_URL;
 
 export default function Mentors() {
     const [mentors, setMentors] = useState([]);
     const [id, setId] = useState("");
+    const history = useHistory();
 
     //get all potential members
-    const findMentors = async () => {
-      
-        const tempUser = jwt.verify(localStorage.getItem('token'), JWT_SECRET);
-        console.log(tempUser)
+    const findMentors = async (id) => {
 
-        const result = await fetch(`http://localhost:5000/fullUser/findMentors/${tempUser.id}`, {
+        const result = await fetch(`${api}/fullUser/findMentors/${id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -23,13 +22,14 @@ export default function Mentors() {
         }).then( res => res.json() );
       
         console.log(result);
-        setId(tempUser.id)
+        setId(id)
         setMentors(result);
-      
     }
 
     useEffect(() => {
-        findMentors();
+        let token = localStorage.getItem('token');
+        let auth = authenticate(token, history);
+        if(auth) {getUser(token).then(res => {findMentors(res._id)});};
     }, [])
 
     const createMentor = (mentor) => (

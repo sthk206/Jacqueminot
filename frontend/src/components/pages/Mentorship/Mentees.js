@@ -2,19 +2,18 @@ import React, {useEffect, useState} from 'react';
 import NavBar from "../../misc/NavBar.js";
 import filler from "../../../images/filler.png"
 import Button from "react-bootstrap/Button"
-const jwt = require('jsonwebtoken')
-const JWT_SECRET = 'lkjsdfku4@#$@#o7w59 pajfclvkas%$#ur3daFDUA'
+import { authenticate, getUser } from '../../auth/auth.js'
+import {useHistory, useLocation} from 'react-router-dom'
+const api = process.env.REACT_APP_API_URL;
 
 export default function Mentees() {
     const [mentees, setMentees] = useState([]);
-    const [id, setId] = useState("");
+    const [id, setId] = useState(1);
+    const history = useHistory();
 
-    const findMentees = async () => {
-      
-        const tempUser = jwt.verify(localStorage.getItem('token'), JWT_SECRET);
-        console.log(tempUser)
+    const findMentees = async (id) => {
 
-        const result = await fetch(`http://localhost:5000/fullUser/findMentees/${tempUser.id}`, {
+        const result = await fetch(`${api}/fullUser/findMentees/${id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -22,13 +21,14 @@ export default function Mentees() {
         }).then( res => res.json() );
       
         console.log(result);
-        setId(tempUser.id);
+        setId(id);
         setMentees(result);
       
     }
-
     useEffect(() => {
-        findMentees();
+        let token = localStorage.getItem('token');
+        let auth = authenticate(token, history);
+        if(auth) {getUser(token).then(res => {findMentees(res._id)});}
     }, [])
 
     const createMentee = (mentee) => (

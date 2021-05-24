@@ -7,6 +7,7 @@ import { Form } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { authenticate, getUser } from '../../auth/auth.js';
+const api = process.env.REACT_APP_API_URL;
 
 export default function EditProfile() {
     const [user, setUser] = useState({});
@@ -17,14 +18,9 @@ export default function EditProfile() {
    
     useEffect( () => {
         let token = localStorage.getItem('token'); 
-        authenticate(token, history);
-        getUser(token).then(res => {setUser(res)});
+        let auth = authenticate(token, history);
+        if(auth) {getUser(token).then(res => {setUser(res)});}
     }, []);
-
-    // useEffect(() => {
-    //     console.log(loc.user);
-    //     setUser(loc.user);
-    // }, []);
 
     const update = async (data) => {
         let body = new FormData();
@@ -43,7 +39,7 @@ export default function EditProfile() {
         body.append('pfp', data.pfp[0]);
         body.append('password', data.cp); 
       
-        const result = await fetch('http://localhost:5000/fullUser/update', {
+        const result = await fetch(`${api}/fullUser/update`, {
           method: 'POST',
           body: body
         }).then( res => res.json() );
