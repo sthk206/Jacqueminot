@@ -14,8 +14,10 @@ export default function Home() {
     const redirectMessages = () => history.push('/messages');
 
     useEffect( () => {
-        !location.loggedIn && history.push('/login');
-       }, []);
+        if(!localStorage.getItem('token')){
+            history.push('/login');
+        }
+    }, []);
 
 return (
 
