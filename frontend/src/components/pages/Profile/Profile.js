@@ -34,6 +34,39 @@ export default function Profile() {
         getUserdata();
     }, [])
 
+    const updateBeMentee = async (e) => {
+        console.log(e);
+        const result = await fetch('http://localhost:5000/fullUser/update', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "token": localStorage.getItem('token'),
+                "beMentee":e
+            })
+          }).then( res => res.json() );
+        
+          console.log(result);
+    } 
+
+    const updateBeMentor = async (e) => {
+        console.log(e);
+        const body = {
+            "token": localStorage.getItem('token'),
+            "beMentor":e
+        } 
+        console.log(body);
+        const result = await fetch('http://localhost:5000/fullUser/update', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+          }).then( res => res.json() );
+        
+          console.log(result);;
+    } 
 
 return (
     <div className="grid-container">
@@ -54,6 +87,7 @@ return (
                     onstyle='success'
                     offlabel=' '
                     offstyle='danger'
+                    onChange={updateBeMentee}
                 />
             </div>
             <div className="center">
@@ -64,6 +98,7 @@ return (
                     onstyle='success'
                     offlabel=' '
                     offstyle='danger'
+                    onChange={updateBeMentor}
                 />
             </div>
         </div>
