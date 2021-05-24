@@ -2,17 +2,17 @@ import React, {useEffect, useState} from 'react'
 import NavBar from "../../misc/NavBar.js";
 import filler from "../../../images/filler.png"
 import Button from "react-bootstrap/Button"
-const jwt = require('jsonwebtoken')
-const JWT_SECRET = 'lkjsdfku4@#$@#o7w59 pajfclvkas%$#ur3daFDUA'
+import {useHistory, useLocation} from 'react-router-dom';
+import { authenticate, getUser } from '../../auth/auth.js'
 
 export default function Messages() {
     const [brothers, setBrothers] = useState([]);
-    const [id, setId] = useState("")
+    const [id, setId] = useState("");
+    const history = useHistory();
 
-    const findBrothers = async () => {
+    const findBrothers = async (token) => {
       
-        const tempUser = jwt.verify(localStorage.getItem('token'), JWT_SECRET);
-        console.log(tempUser)
+        const tempUser = await getUser(token);
 
         const result = await fetch(`http://localhost:5000/fullUser/`, {
           method: 'GET',
@@ -28,7 +28,9 @@ export default function Messages() {
     }
 
     useEffect(() => {
-        findBrothers();
+        let token = localStorage.getItem('token');
+        authenticate(token, history);
+        findBrothers(token);
     }, [])
 
     const createBrother = (brother) => (

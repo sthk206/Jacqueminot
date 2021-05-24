@@ -6,9 +6,7 @@ import { useForm } from 'react-hook-form';
 import { Form } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
-const jwt = require('jsonwebtoken')
-
-const JWT_SECRET = 'lkjsdfku4@#$@#o7w59 pajfclvkas%$#ur3daFDUA'
+import { authenticate, getUser } from '../../auth/auth.js';
 
 export default function EditProfile() {
     const [user, setUser] = useState({});
@@ -16,14 +14,19 @@ export default function EditProfile() {
     const history = useHistory();
     const loc = useLocation();
     const redirectProfile = () => history.push('/profile');
-    
-    useEffect(() => {
-        console.log(loc.user);
-        setUser(loc.user);
+   
+    useEffect( () => {
+        let token = localStorage.getItem('token'); 
+        authenticate(token, history);
+        getUser(token).then(res => {setUser(res)});
     }, []);
 
+    // useEffect(() => {
+    //     console.log(loc.user);
+    //     setUser(loc.user);
+    // }, []);
+
     const update = async (data) => {
-        console.log(data)
         let body = new FormData();
         body.append("token", localStorage.getItem('token'),)
         body.append('first', data.first);

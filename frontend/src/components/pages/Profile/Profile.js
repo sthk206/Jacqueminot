@@ -4,36 +4,21 @@ import filler from "../../../images/filler.png"
 import {useHistory, useLocation} from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
-import BootstrapSwitchButton from 'bootstrap-switch-button-react'
-
-const jwt = require('jsonwebtoken')
-const JWT_SECRET = 'lkjsdfku4@#$@#o7w59 pajfclvkas%$#ur3daFDUA'
+import BootstrapSwitchButton from 'bootstrap-switch-button-react';
+import { authenticate, getUser } from '../../auth/auth.js'
 
 export default function Profile() {
     const [user, setUser] = useState({});
     const history = useHistory();
 
-    //get user data function
-    const getUserdata = async () => {
 
-        const tempUser = jwt.verify(localStorage.getItem('token'), JWT_SECRET);
-        
-        const result = await fetch(`http://localhost:5000/fullUser/${tempUser.id}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }).then( res => res.json() );
-
-        console.log(result);
-        setUser(result);
-      
-    }
-
-
-    useEffect(() => {
-        getUserdata();
+    useEffect( () => {
+        let token = localStorage.getItem('token');
+        authenticate(token, history);
+        getUser(token).then(res => {setUser(res)});
     }, [])
+
+
 
     const updateBeMentee = async (e) => {
         console.log(e);
