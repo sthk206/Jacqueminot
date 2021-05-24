@@ -12,17 +12,17 @@ return (
     <div className="home-container">
         <NavBar/>
 
-        <div className="home-box">
-            <Button onClick={redirectOG} variant="dark" className="home-button">                
+        <div className="family-box">
+            <Button onClick={redirectOG} variant="dark" className="family-button">                
                 <p><b>OG</b></p>
             </Button>
-            <Button onClick={redirectTNA} variant="dark" className="home-button">
+            <Button onClick={redirectTNA} variant="dark" className="family-button">
                 <p><b>TNA</b></p>
             </Button>
-            <Button onClick={redirectOranges} variant="dark" className="home-button">
+            <Button onClick={redirectOranges} variant="dark" className="family-button">
                 <p><b>Oranges</b></p>
             </Button>
-            <Button onClick={redirectDisney} variant="dark" className="home-button">
+            <Button onClick={redirectDisney} variant="dark" className="family-button">
                 <p><b>Disney</b></p>
             </Button>
         </div>

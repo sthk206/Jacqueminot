@@ -1,7 +1,9 @@
 import React from 'react';
 import NavBar from "../../misc/NavBar.js";
 import filler from "../../../images/filler.png"
+
 import Button from "react-bootstrap/Button";
+import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
 export default function Profile() {
 return (
@@ -15,13 +17,41 @@ return (
                 {/* Job Title */}
                 <h6>CS student at UC San Diego</h6>
             </div>
-            <div className="grid center">
-                <h3>Mentor Status</h3>
-                <Button variant="success">Open</Button>
+            <div className="center">
+                <h5>Mentor Status: </h5>
+                <BootstrapSwitchButton
+                    // onlabel='&#x2713;'
+                    onlabel=' '
+                    onstyle='success'
+                    // offlabel='&#10007;'
+                    offlabel=' '
+                    offstyle='danger'
+                    // onChange={(checked) => {
+                    //     if(checked) CheckOff(event._id);
+                    //     else UnCheckOff(event._id);
+                    // }}
+                />
+                {/* <Button variant="success">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </Button> */}
             </div>
-            <div className="grid center">
-                <h3>Mentee Status</h3>
-                <Button variant="danger">Closed</Button>
+            <div className="center">
+                <h5>Mentee Status: </h5>
+                {/* <Button variant="danger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </Button> */}
+                <BootstrapSwitchButton
+                    // onlabel='&#x2713;'
+                    onlabel=' '
+                    onstyle='success'
+                    // offlabel='&#10007;'
+                    offlabel=' '
+                    offstyle='danger'
+                    // onChange={(checked) => {
+                    //     if(checked) CheckOff(event._id);
+                    //     else UnCheckOff(event._id);
+                    // }}
+                />
             </div>
         </div>
         <div className="profile-about">
@@ -59,7 +89,7 @@ return (
                     </tr>
                 </tbody>
             </table>
-            <p>
+            <p className="add-info">
                 {/* <em>Class</em> : Sigma <br/>
                 <em>Major</em> : Computer Science <br/>
                 <em>Graudation Year</em> : 2021 <br/>

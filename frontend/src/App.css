@@ -46,6 +46,12 @@
 .grid{
   display: grid;
 }
+.bg-black{
+  background-color: black;
+}
+h1, h2, h3, h4, h5, h6, p, tr, td{
+  font-family: Montserrat-Regular;
+}
 
 /* Home */
 
@@ -159,7 +165,6 @@ form{
 /* NavBar */
 
 .navbar{
-  color: black;
   background-color: black;
   font-family: Montserrat-ExtraLight;
 }
@@ -167,6 +172,7 @@ form{
 .navbar img{
   margin-right: 10px;
 }
+
 
 /*Mentorship*/
 .mentorship-p{
@@ -296,7 +302,7 @@ form{
   margin: 0px;
   background-color: black;
   grid-template-columns: 35% 65%;
-  grid-template-rows: 70% auto;
+  grid-template-rows: 75% auto;
   padding-top: 56px;
 }
 .profile-base {
@@ -309,21 +315,38 @@ form{
   color: white;
   border-right: 1px solid white;
 }
+.profile-base svg{
+  padding-bottom: 5px;
+}
 .profile-base img{
   margin-bottom: 20px;
 }
 .profile-base button{
   pointer-events: none;
+  /* display: inline; */
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  margin-left: 10px;
+
 }
 .profile-about{
   display: grid;
+  align-self: flex-end;
   color: white;
-  padding: 90px 50px 0 30px;
+  /* padding: 90px 50px 0 30px; */
+  padding: 0px 50px 0 30px;
   margin-bottom: 0;
 }
 .profile-about p{
   margin-left: 30px;
-  line-height: 2.5;
+}
+.add-info{
+  line-height: 1.5;
+
+}
+.profile-base h5{
+  display: inline;
 }
 .profile-about em{
   font-weight: bold;
@@ -351,6 +374,15 @@ form{
   color: rgb(255, 203, 30);
   background-color: black;
 
+}
+
+.profile-base h5{
+  margin-right: 10px;
+}
+
+.switch.btn {
+  min-width: 3.7rem;
+  min-height: 2rem;
 }
 /* canvas{
   min-width: 1000px;
@@ -400,11 +432,13 @@ form{
 .mentor-button{
   background-color: #420000;
   color: white;
-  width: 150px;
+  width: 69%;
   height: 25%;
   transition: 0.5s;
   border-color: black;
   margin-top: 15px;
+
+
 }
 .mentor-button p{
   display: inline;
@@ -431,42 +465,50 @@ form{
 .message-container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 10% auto;
-  padding-top: 56px;
+  grid-template-rows: repeat(auto-fill, 540px);
   justify-items: center;
-  /* ali */
-  padding-top: 156px;
+  align-items: center;
   min-height: 100vh;
   max-width: 100vw;
+  height: fit-content;
   margin: 0px;
+
   background-color: black;
   color: white;
-
+  position: relative;
 }
 .messages-title{
-  grid-column-start: 1;
-  grid-column-end: 4;
-  justify-self: baseline;
   margin-left: 50px;
 
 }
+.messages-wrapper{
+  background-color: black;
+  padding-top: 96px;
+  color: white;
+}
 
 .messages-placard{
-  margin: 20px 0;
-  width: 80%;
-  height: 450px;
+  width: 85%;
+  height: 90%;
   /* height: 200px; */
   border: 1px solid white;
   display: grid;
-  grid-template-rows: 40% 60%;
+  /* grid-template-rows: 40% 60%; */
   color: white;
   justify-items: center;
   align-items: center;
 }
+.messages-placard img{
+  align-self: flex-end;
+}
 
-.messages-span{
+.messages-div{
   align-items: center;
   justify-items: center;
+  width: 87%;
+}
+.messages-div h1{
+  font-size: 2em;
 }
 .messages-placard table{
   width: 100%;
@@ -474,13 +516,14 @@ form{
 .messages-button{
   background-color: #420000;
   color: white;
-  width: 150px;
+  width: 100%;
   height: 25%;
   transition: 0.5s;
   border-color: black;
-  margin-top: 15px;
-  position: relative;
-  margin-left: auto;
+  margin-top: 20px;
+  /* CENTER IN A DIV */
+  margin: 20px auto 0;
+  display:block;
 }
 .messages-button p{
   display: inline;
@@ -497,4 +540,51 @@ form{
   background-color: black;
   border-color: rgb(255, 203, 30);
   color: rgb(255, 203, 30);
+}
+
+
+/* Trees */
+.fam{
+  margin-top: 56px;
+}
+.family-button{
+  background-color: #420000;
+  color: white;
+  height: 340px;
+  width: 100%;
+  margin: 0 5px 0 5px;
+  transition: 0.5s;
+  border-color: black;
+}
+.family-button:hover{
+  fill: rgb(255, 203, 30); /*svg color change on button hover*/
+}
+.family-button:hover{
+  background-color: black;
+  border-color: rgb(255, 203, 30);
+  color: rgb(255, 203, 30);
+}
+
+
+.family-button:focus{
+  background-color: #420000;
+  border-color: rgb(255, 203, 30);
+}
+.family-button:active{
+  /* background-color: #420000; */
+  color: rgb(255, 203, 30);
+}
+.family-button p{
+  margin-top: 10px;
+  font-family: Montserrat-ExtraLight;
+  font-size: 130%;
+}
+.family-box {
+  width: 70%;
+  margin: 10px;
+  text-align: center;     /* will center text in <p>, which is not a flex item */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
