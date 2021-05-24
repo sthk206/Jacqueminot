@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import NavBar from "../../misc/NavBar.js";
 import filler from "../../../images/filler.png"
-
+import {useHistory, useLocation} from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
 const jwt = require('jsonwebtoken')
-
 const JWT_SECRET = 'lkjsdfku4@#$@#o7w59 pajfclvkas%$#ur3daFDUA'
 
 export default function Profile() {
     const [user, setUser] = useState({});
+    const history = useHistory();
 
     //get user data function
     const getUserdata = async () => {
@@ -50,6 +50,13 @@ export default function Profile() {
           console.log(result);
     } 
 
+    const edit = () => {
+        history.push({
+            pathname: '/editprofile',
+            user
+        });
+    }
+
     const updateBeMentor = async (e) => {
         console.log(e);
         const body = {
@@ -75,7 +82,7 @@ return (
         <div className="profile-base center">
             <img width="200px" height="200px" src={filler} alt=""/>
             <div className="grid center">
-                <h1>{user.name}</h1>
+                <h1>{user.first} {user.last}</h1>
                 {/* Job Title */}
                 <h6> {user.occupation} at {user.org}</h6>
             </div>
@@ -104,7 +111,7 @@ return (
         </div>
         <div className="profile-about">
 
-            <h2>About | <a href="/editprofile">edit</a></h2>
+            <h2>About | <span onClick={edit}>Edit</span></h2>
             <table cellSpacing="0" cellPadding="0">
                 <tbody>
 
@@ -138,7 +145,7 @@ return (
                 </tbody>
             </table>
             <p className="add-info">
-                {user.description}
+                {user.additional}
             </p>
 
         </div>

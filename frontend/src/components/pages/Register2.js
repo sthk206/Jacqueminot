@@ -35,15 +35,16 @@ export default function Register2() {
           },
           body: JSON.stringify({
             username: email,
-            password: password,
-            name: first + " " + last,
+            password,
+            first,
+            last,
             clss: temp.clss,
             fam: temp.fam,
             year: temp.year,
             major: temp.major,
             occupation: temp.occupation,
             organization: temp.organization,
-            description: temp.additional,
+            additional: temp.additional,
           })
         }).then( res => res.json() );
       
