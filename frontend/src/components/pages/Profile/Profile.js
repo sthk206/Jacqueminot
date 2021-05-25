@@ -71,7 +71,7 @@ return (
         <NavBar/>
 
         <div className="profile-base center">
-            <img width="200px" height="200px" src={`http://localhost:5000/${user.pfp}`} alt=""/>
+            <img width="200px" height="200px" src={user.pfp ? `${api}/${user.pfp}` : filler} alt=""/>
             <div className="grid center">
                 <h1>{user.first} {user.last}</h1>
                 {/* Job Title */}

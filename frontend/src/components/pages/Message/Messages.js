@@ -33,7 +33,7 @@ export default function Messages() {
 
     const createBrother = (brother) => (
         <div className="messages-placard">
-            <img width="150px" height="150px" src={filler} alt=""/>
+            <img width="150px" height="150px" src={brother.pfp ? `${api}/${brother.pfp}` : filler} alt=""/>
             <div className="messages-div">
                 <h1>Brother {brother.first} {brother.last}</h1>
                 <table cellSpacing="0" cellPadding="0">
