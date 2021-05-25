@@ -33,7 +33,7 @@ export default function Mentees() {
 
     const createMentee = (mentee) => (
         <div className="mentor-placard">
-            <img width="150px" height="150px" src={filler} alt=""/>
+            <img width="150px" height="150px" src={mentee.pfp ? `${api}/${mentee.pfp}` : filler} alt=""/>
             <div className="center2">
                 <h1>Brother {mentee.first} {mentee.last}</h1>
                 <table cellSpacing="0" cellPadding="0">

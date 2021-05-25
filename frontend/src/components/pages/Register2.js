@@ -25,20 +25,22 @@ export default function Register2() {
             occupation: e.target[4].value,
             organization: e.target[5].value,
             additional: e.target[6].value,
+            fb: e.target[7].value,
+            linkedin: e.target[8].value,
         }
         const {first, last, email, password, confirm} = location.state;
         
       
-        const result = await fetch(`{api}/fullUser/add`, {
+        const result = await fetch(`${api}/fullUser/add`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             username: email,
-            password,
-            first,
-            last,
+            password: password,
+            first: first,
+            last: last,
             clss: temp.clss,
             fam: temp.fam,
             year: temp.year,
@@ -46,6 +48,8 @@ export default function Register2() {
             occupation: temp.occupation,
             organization: temp.organization,
             additional: temp.additional,
+            fb: temp.fb,
+            linkedin: temp.linkedin,
           })
         }).then( res => res.json() );
       

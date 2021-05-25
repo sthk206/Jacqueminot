@@ -34,7 +34,7 @@ export default function Mentors() {
 
     const createMentor = (mentor) => (
         <div className="mentor-placard">
-            <img width="150px" height="150px" src={filler} alt=""/>
+            <img width="150px" height="150px" src={mentor.pfp ? `${api}/${mentor.pfp}` : filler} alt=""/>
 
             <div className="center2">
                 <h1>Brother {mentor.first} {mentor.last}</h1>

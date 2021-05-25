@@ -526,15 +526,7 @@ form {
     justify-self: center;
 }
 
-.mentor-button {
-    background-color: #420000;
-    color: white;
-    width: 200px;
-    height: 25%;
-    transition: 0.5s;
-    border-color: black;
-    margin-top: 15px;
-}
+
 
 .mentor-placard table {
     width: 100%;
@@ -543,7 +535,7 @@ form {
 .mentor-button {
     background-color: #420000;
     color: white;
-    width: 260px;
+    width: 180px;
     height: 25%;
     transition: 0.5s;
     border-color: black;
