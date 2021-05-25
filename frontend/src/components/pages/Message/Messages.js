@@ -70,7 +70,7 @@ return (
         <h1 className="messages-title">Brothers of Theta Tau</h1>
         <div className="message-container">
 
-            {brothers.map((brother) => brother._id !== id ? createBrother(brother) : null )};
+            {brothers.map((brother) => brother._id !== id ? createBrother(brother) : null )}
 
         </div>
     </div>
