@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import NavBar from "../misc/NavBar.js";
 import rose from "../../images/rose7.jpeg";
 import Button from "react-bootstrap/Button";
@@ -9,13 +9,36 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 const api = process.env.REACT_APP_API_URL
 
 export default function Register2() {
-
     const history = useHistory();
     const location = useLocation();
     const redirectRegister = () => history.push('/register');
+    const [validated, setValidated] = useState(false);
+
+    const [cls, setCls] = useState("Select Class...");
+    const [fm, setFmm] = useState("Select Family...")
+    const [mjr, setMjr] = useState("Select Major...")
+
+    const handleCls = name => (temp) => {
+        setCls(temp.target.value);
+    }
+
+    const handleFm = name1 => (temp) => {
+        setFmm(temp.target.value);
+    }
+
+    const handleMjr = name2 => (temp) => {
+        setMjr(temp.target.value);
+    }
 
     const register = async (e) => {
         e.preventDefault();
+        
+        const form = e.currentTarget;
+        setValidated(true);
+        if (form.checkValidity() === false) {
+            e.stopPropagation();
+            return;
+        }
       
         const temp = {
             clss: e.target[0].value,
@@ -55,10 +78,7 @@ export default function Register2() {
       
         if(result.success){
           localStorage.setItem('token', result.data);
-          history.push({
-              pathname: '/',
-              loggedIn: true,
-          })
+          history.push('/');
         }else {
           alert (result.error);
         }
@@ -71,11 +91,11 @@ return (
             <img height="70" width="70" src={rose} alt=""/> 
             <h1 className="title">JACQUEMINOT</h1>
         </div>
-        <Form className="register2-form" onSubmit={register}>
+        <Form noValidate validated={validated} className="register2-form" onSubmit={register}>
             <Form.Row>
                 <Form.Group as={Col} controlId="register2-class">
                     <Form.Label>CLASS</Form.Label>
-                    <Form.Control as="select" defaultValue = "Select Class...">
+                    <Form.Control isInvalid={validated && cls === "Select Class..."} required as="select" defaultValue = "Select Class..." value={cls} onChange={handleCls(cls)}>
                         <option disabled>Select Class...</option>
                         <option>Charter</option>
                         <option>Alpha</option>
@@ -102,26 +122,29 @@ return (
                         <option>Chi</option>
                         <option>Psi</option>
                     </Form.Control>
+                    <Form.Control.Feedback type="invalid">Please select a class</Form.Control.Feedback>
                 </Form.Group>
                 
 
                 <Form.Group as={Col} controlId="register2-family">
                     <Form.Label>FAMILY</Form.Label>
-                    <Form.Control as="select" defaultValue="Select Family..."> 
+                    <Form.Control isInvalid={validated && fm === "Select Family..."} required as="select" defaultValue="Select Family..." value={fm} onChange={handleFm(fm)}> 
                         <option disabled>Select Family...</option>
                         <option>OG</option>
                         <option>Disney</option>
                         <option>Oranges</option>
                         <option>TNA</option>
                     </Form.Control>
+                    <Form.Control.Feedback type="invalid">Please select a family</Form.Control.Feedback>
                 </Form.Group>
+               
             </Form.Row>
 
 
             <Form.Row>
                 <Form.Group as={Col} controlId="register2-major">
                         <Form.Label>MAJOR</Form.Label>
-                        <Form.Control as="select" defaultValue="Select Major...">
+                        <Form.Control isInvalid={validated && mjr === "Select Major..."} required as="select" defaultValue="Select Major..." value={mjr} onChange={handleMjr(mjr)}>
                             <option disabled>Select Major...</option>
                             <option>Aerospace Engineering</option>
                             <option>Bioengineering</option>
@@ -136,45 +159,63 @@ return (
                             <option>Data Science</option>
                             <option>Other (Please manually edit your major in the Edit Profle page)</option>
                         </Form.Control>
+                        <Form.Control.Feedback type="invalid">Please select a major</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="register2-year">
                     <Form.Label>YEAR</Form.Label>
-                    <Form.Control type="year" placeholder="Enter Graduation Year" />
+                    <Form.Control required type="number" placeholder="Enter Graduation Year" />
+                    <Form.Control.Feedback type="invalid">Please enter a year</Form.Control.Feedback>
                 </Form.Group>
             </Form.Row>
 
 
             <Form.Group controlId="register2-occupation">
                 <Form.Label>CURRENT OCCUPATION</Form.Label>
-                <Form.Control type="text" placeholder="Student, Product Management, UI/UX Design, etc." />
+                <Form.Control required type="text" placeholder="Student, Product Management, UI/UX Design, etc." />
+                <Form.Control.Feedback type="invalid">Please enter an occupation</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="register2-organization">
-                <Form.Label>Organization</Form.Label>
-                <Form.Control type="text" placeholder="UC San Diego, Amazon, Google, etc." />
+                <Form.Label>ORGANIZATION</Form.Label>
+                <Form.Control required type="text" placeholder="UC San Diego, Amazon, Google, etc." />
+                <Form.Control.Feedback type="invalid">Please enter an organization</Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group controlId="register2-info">
                 <Form.Label>ADDITIONAL INFO</Form.Label>
-                <Form.Control as="textarea" rows={4} placeholder="Please tell us more about yourself!" /> 
+                <Form.Control required as="textarea" rows={4} placeholder="Please tell us more about yourself!" /> 
+                <Form.Control.Feedback type="invalid">Please tell us more</Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group controlId="register2-facebook">
                 <Form.Label>FACEBOOK PROFILE</Form.Label>
-                <Form.Control type="text" placeholder="https://www.facebook.com/xxxxxxx" />
+                <Form.Control required type="text" placeholder="https://www.facebook.com/xxxxxxx" />
+                <Form.Control.Feedback type="invalid">Please enter a link to your Facebook profile</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="register2-linkedin">
                 <Form.Label>LINKEDIN LINK</Form.Label>
-                <Form.Control type="text" placeholder="https://www.linkedin.com/xxxxxxx" />
+                <Form.Control required type="text" placeholder="https://www.linkedin.com/xxxxxxx" />
+                <Form.Control.Feedback type="invalid">Please enter a link to your LinkedIn profile</Form.Control.Feedback>
             </Form.Group>
 
-            <Button variant="outline-dark" type='submit'>
-                Sign Up
-            </Button>
-            <Button variant="outline-dark" onClick={redirectRegister}>
-                Back
-            </Button>
+            <div class="form-buttons">
+                <Button variant="outline-dark" type="submit"> 
+                    SIGN UP
+                </Button>
 
+                <a> 
+                    <Button variant="outline-dark"  onClick={redirectRegister}> 
+                        GO BACK
+                    </Button>
+                </a>
+
+                <a href="/login">
+                    <Button variant="outline-dark"> 
+                        RETURN TO LOGIN
+                    </Button>
+                </a>
+
+            </div>
         </Form>
     </div>
 );

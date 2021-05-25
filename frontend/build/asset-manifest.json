@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/static/css/main.70beff03.chunk.css",
+    "main.js": "/static/js/main.ec62b1b6.chunk.js",
+    "main.js.map": "/static/js/main.ec62b1b6.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.62553127.js",
+    "runtime-main.js.map": "/static/js/runtime-main.62553127.js.map",
+    "static/css/2.5c573378.chunk.css": "/static/css/2.5c573378.chunk.css",
+    "static/js/2.3aa4698a.chunk.js": "/static/js/2.3aa4698a.chunk.js",
+    "static/js/2.3aa4698a.chunk.js.map": "/static/js/2.3aa4698a.chunk.js.map",
+    "static/js/3.69773ae9.chunk.js": "/static/js/3.69773ae9.chunk.js",
+    "static/js/3.69773ae9.chunk.js.map": "/static/js/3.69773ae9.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.5c573378.chunk.css.map": "/static/css/2.5c573378.chunk.css.map",
+    "static/css/main.70beff03.chunk.css.map": "/static/css/main.70beff03.chunk.css.map",
+    "static/js/2.3aa4698a.chunk.js.LICENSE.txt": "/static/js/2.3aa4698a.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/Montserrat-SemiBold.fa8441f3.ttf",
+    "static/media/chat.8d725e93.svg": "/static/media/chat.8d725e93.svg",
+    "static/media/disney.3595cba0.pdf": "/static/media/disney.3595cba0.pdf",
+    "static/media/filler.17df8b8c.png": "/static/media/filler.17df8b8c.png",
+    "static/media/logo.6ce24c58.svg": "/static/media/logo.6ce24c58.svg",
+    "static/media/mentor.9d2f1e1a.svg": "/static/media/mentor.9d2f1e1a.svg",
+    "static/media/og.03493b05.pdf": "/static/media/og.03493b05.pdf",
+    "static/media/oranges.68dbbc8f.pdf": "/static/media/oranges.68dbbc8f.pdf",
+    "static/media/rose7.03482368.jpeg": "/static/media/rose7.03482368.jpeg",
+    "static/media/tna.92ed8833.pdf": "/static/media/tna.92ed8833.pdf",
+    "static/media/tree.af766f81.svg": "/static/media/tree.af766f81.svg",
+    "static/media/user.430c6671.svg": "/static/media/user.430c6671.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.62553127.js",
+    "static/css/2.5c573378.chunk.css",
+    "static/js/2.3aa4698a.chunk.js",
+    "static/css/main.70beff03.chunk.css",
+    "static/js/main.ec62b1b6.chunk.js"
+  ]
+}

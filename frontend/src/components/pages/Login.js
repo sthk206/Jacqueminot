@@ -3,7 +3,7 @@ import rose from "../../images/rose7.jpeg";
 import Button from "react-bootstrap/Button";
 import NavBar from "../misc/NavBar.js";
 import {useHistory} from 'react-router-dom';
-import { Form } from 'react-bootstrap';
+import { Form, Toast } from 'react-bootstrap';
 const api = process.env.REACT_APP_API_URL;
 
 
@@ -11,6 +11,9 @@ export default function Login() {
     const history = useHistory();
     const redirectMentorship = () => history.push('/mentorship');
     const [validated, setValidated] = useState(false);
+    const [show, setShow] = useState(false);
+    const [message, setMessage] = useState('');
+    const [toLogin, setLogin] = useState(false);
 
     const login = async (e) => {
         e.preventDefault();
@@ -35,21 +38,56 @@ export default function Login() {
             password
           })
         }).then( res => res.json() );
-      
-        if(result.status === 'ok'){
+
+      if(result.success){
           localStorage.setItem('token', result.data);
-          history.push({
-              pathname: '/',
-              loggedIn: true
-          })
-        }else {
-          alert (result.error);
-        }
-      
+          history.push('/');
+      }else{
+          setMessage(result.message);
+          setLogin(false);
+          setShow(true);
       }
+      
+    }
 
 return (
     <div className="home-container">
+
+      {/* {PopUp} */}
+      <div
+            aria-live="polite"
+            aria-atomic="true"
+            style={{
+                position: 'absolute',
+                minHeight: '100px',
+                minWidth:'200px',
+                top: '2%',
+                width: '10%',
+            }}
+            >
+            <Toast
+                style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                textAlign:'center'
+                }}
+                show={show}
+                autohide
+                delay={3000}
+                onClose={() => {
+                    setShow(false);
+                    if(toLogin){ history.push('/') };
+                }}
+            >
+                <Toast.Header>
+                <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" />
+                <strong className="mr-auto">Message</strong>
+                </Toast.Header>
+                <Toast.Body>{message}</Toast.Body>
+            </Toast>
+        </div>
+
         <div className="home-box">
             <img height="70" width="70" src={rose} alt=""/>
             <h1 className="title">JACQUEMINOT</h1>
@@ -57,14 +95,14 @@ return (
         <Form noValidate validated={validated} className="input-form" onSubmit={login}>
             <Form.Group controlId="login-email">
                 <Form.Label>EMAIL ADDRESS</Form.Label>
-                <Form.Control type="email" placeholder="Enter Email" />
+                <Form.Control required type="email" placeholder="Enter Email" />
                 <Form.Control.Feedback type="invalid">Please enter a valid email</Form.Control.Feedback>
             </Form.Group>
 
 
             <Form.Group controlId="login-password">
                 <Form.Label>PASSWORD</Form.Label>
-                <Form.Control type="password" placeholder="Enter Password" />
+                <Form.Control required minLength={6} type="password" placeholder="Enter Password" />
                 <Form.Control.Feedback type="invalid">Please enter your password</Form.Control.Feedback>
             </Form.Group>
 

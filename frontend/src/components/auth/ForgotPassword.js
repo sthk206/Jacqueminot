@@ -8,9 +8,6 @@ const api = process.env.REACT_APP_API_URL
 export default function ForgotPassword() {
     const history = useHistory();
     const [email, setEmail] = useState('');
-    const [showError, setShowError] = useState(false);
-    const [messageFromServer, setMessageFromServer] = useState('');
-    const [showNullError, setShowNullError] = useState(false);
     const [validated, setValidated] = useState(false);
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState('');
@@ -30,34 +27,27 @@ export default function ForgotPassword() {
             return;
         }
 
-        if (email === '') {
-            setShowError(false)
-            setMessageFromServer('');
-            setShowNullError(false);
-        } else {
+        const fp = await fetch(`${api}/fullUser/fp`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: email
+            })
+            }).then( res => res.json())
+            .catch(err => {
+                alert(err);
+        });
 
-            const fp = await fetch(`${api}/fullUser/fp`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: email
-                })
-                }).then( res => res.json())
-                .catch(err => {
-                    alert(err);
-            });
-
-            if(fp.success){
-                setMessage('Email Sent!');
-                setLogin(true);
-                setShow(true)
-            }else{
-                setMessage('Email Not Found');
-                setLogin(false);
-                setShow(true);
-            }
+        if(fp.success){
+            setMessage('Email Sent!');
+            setLogin(true);
+            setShow(true)
+        }else{
+            setMessage('User Not Found');
+            setLogin(false);
+            setShow(true);
         }
     };
 
@@ -66,7 +56,7 @@ export default function ForgotPassword() {
 return (
     <div className="home-container">
 
-        {/* {Email sent PopUp} */}
+        {/* {PopUp} */}
         <div
             aria-live="polite"
             aria-atomic="true"
@@ -99,7 +89,7 @@ return (
                 </Toast.Header>
                 <Toast.Body>{message}</Toast.Body>
             </Toast>
-            </div>
+        </div>
 
         <div className="home-box">
             <img height="70" width="70" src={rose} alt=""/>
