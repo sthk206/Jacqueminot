@@ -13,7 +13,7 @@ export default function Mentors() {
 
     //get all potential members
     const findMentors = async (id) => {
-
+        console.log(`${api}/fullUser/findMentors/${id}`)
         const result = await fetch(`${api}/fullUser/findMentors/${id}`, {
           method: 'GET',
           headers: {
