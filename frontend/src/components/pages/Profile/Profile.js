@@ -89,7 +89,7 @@ return (
                 />
             </div>
             <div className="center">
-                <h5>Looking for Mentee</h5>
+                <h5>Looking for Mentee: </h5>
                 <BootstrapSwitchButton
                     checked={user.beMentor}
                     onlabel=' '
@@ -119,7 +119,7 @@ return (
                         <td>{user.major}</td>
                     </tr>
                     <tr>
-                        <td><em>Graudation Year:</em></td>
+                        <td><em>Graduation Year:</em></td>
                         <td>{user.year}</td>
                     </tr>
                     <tr>
