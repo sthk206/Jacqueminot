@@ -9,6 +9,11 @@ import rose from "../../images/rose7.jpeg";
 export default function NavBar() {
     const history =  useHistory();
 
+    const redirectMentorship = () => history.push('/mentorship');
+    const redirectTrees = () => history.push('/trees');
+    const redirectProfile = () => history.push('/profile');
+    const redirectMessages = () => history.push('/messages');
+    const redirectAbout = () => history.push('/about');
     //logout
     const logout = () => {
         localStorage.removeItem('token');
@@ -20,11 +25,11 @@ return (
         <img height="40" width="40" src={rose} alt=""/>
         <Navbar.Brand href="/">JACQUEMINOT</Navbar.Brand>
         <Nav className="ml-auto">
-            <Nav.Link href="/profile">PROFILE</Nav.Link>
-            <Nav.Link href="/mentorship">MENTORSHIP</Nav.Link>
-            <Nav.Link href="/trees">FAMILY TREES</Nav.Link>
-            <Nav.Link href="/messages">MESSAGE</Nav.Link>
-            <Nav.Link href="/about">ABOUT US</Nav.Link>
+            <Nav.Link onClick={redirectProfile} >PROFILE</Nav.Link>
+            <Nav.Link onClick={redirectMentorship}>MENTORSHIP</Nav.Link>
+            <Nav.Link onClick={redirectTrees}>FAMILY TREES</Nav.Link>
+            <Nav.Link onClick={redirectMessages}>MESSAGE</Nav.Link>
+            <Nav.Link onClick={redirectAbout}>ABOUT US</Nav.Link>
             <Nav.Link onClick={logout}>LOGOUT</Nav.Link>
         </Nav>
         {/* <Form inline>

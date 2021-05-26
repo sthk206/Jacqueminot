@@ -9,7 +9,8 @@ const api = process.env.REACT_APP_API_URL;
 
 export default function Login() {
     const history = useHistory();
-    const redirectMentorship = () => history.push('/mentorship');
+    const redirectRegister = () => history.push('/register');
+    const redirectForgot = () => history.push('/fp');
     const [validated, setValidated] = useState(false);
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState('');
@@ -111,18 +112,12 @@ return (
                 <Button variant="outline-dark" type="submit"> 
                     LOGIN
                 </Button>
-
-                <a href="/register">
-                    <Button variant="outline-dark"> 
-                        REGISTER
-                    </Button>
-                </a>
-
-                <a href="/fp">
-                    <Button variant="outline-dark"> 
-                        FORGOT PASSWORD
-                    </Button>
-                </a>
+                <Button onClick={redirectRegister} variant="outline-dark" type="submit"> 
+                    REGISTER
+                </Button>
+                <Button onClick={redirectForgot} variant="outline-dark" type="submit"> 
+                    FORGOT PASSWORD
+                </Button>
             </div>
         </Form>
 
