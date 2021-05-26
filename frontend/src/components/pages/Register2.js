@@ -125,7 +125,7 @@ return (
                     <Form.Control.Feedback type="invalid">Please select a class</Form.Control.Feedback>
                 </Form.Group>
                 
-
+                {/* {remove classes from item???} */}
                 <Form.Group as={Col} controlId="register2-family">
                     <Form.Label>FAMILY</Form.Label>
                     <Form.Control isInvalid={validated && fm === "Select Family..."} required as="select" defaultValue="Select Family..." value={fm} onChange={handleFm(fm)}> 

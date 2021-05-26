@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^4.6.0",
     "bootstrap-switch-button-react": "^1.2.0",
+    "caniuse-lite": "^1.0.30001230",
     "formik": "^2.2.8",
     "jsonwebtoken": "^8.5.1",
     "nodemailer": "^6.6.1",

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import NavBar from "../../misc/NavBar.js";
-import filler from "../../../images/filler.png"
+import filler from "../../../images/rose7.jpeg"
 import {useHistory, useLocation} from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
@@ -11,13 +11,28 @@ const api = process.env.REACT_APP_API_URL;
 export default function Profile() {
     const [user, setUser] = useState({});
     const history = useHistory();
+    const [pfp, setPfp] = useState(null);
 
 
     useEffect( () => {
         let token = localStorage.getItem('token');
         let auth = authenticate(token, history);
-        if(auth) {getUser(token).then(res => {setUser(res)});};
-    }, [])
+        if(auth) {getUser(token).then(res => {
+
+            getpfp(res);
+            setUser(res);
+        });
+        };
+    }, []);
+
+    const getpfp = async (temp) => {
+        const result = fetch(`${api}/fullUser/getUpload/${temp.pfp}`).
+        then( res => res.blob())
+        .then((data) => {
+            let imgURL = URL.createObjectURL(data);
+            setPfp(imgURL);
+        })
+    }
 
 
 
@@ -62,16 +77,14 @@ export default function Profile() {
           console.log(result);;
     } 
 
-    const changePass = () => {
-        
-    };
+
 
 return (
     <div className="grid-container">
         <NavBar/>
 
         <div className="profile-base center">
-            <img width="200px" height="200px" src={user.pfp ? `${api}/${user.pfp}` : filler} alt=""/>
+            <img width="200px" height="200px" src={pfp ? pfp : filler} alt=""/>
             <div className="grid center">
                 <h1>{user.first} {user.last}</h1>
                 {/* Job Title */}

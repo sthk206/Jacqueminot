@@ -23,8 +23,9 @@ export default function EditProfile() {
     }, []);
 
     const update = async (data) => {
+        console.log(data);
         let body = new FormData();
-        body.append("token", localStorage.getItem('token'),)
+        body.append('token', localStorage.getItem('token'));
         body.append('first', data.first);
         body.append('last', data.last);
         body.append('clss', data.clss);

@@ -32,12 +32,6 @@ export default function Register() {
             password: e.target[3].value,
             confirm: e.target[4].value,
         }
-
-        if(temp.password !== temp.confirm){
-            setMessage('Passwords do not match!');
-            setShow(true)
-            return;
-        }
         
         //check email
         const res = await fetch(`${api}/fullUser/email/${temp.email}`, {
@@ -53,6 +47,12 @@ export default function Register() {
 
         if(res.user !== null){
             setMessage('That email is taken!');
+            setShow(true)
+            return;
+        }
+
+        if(temp.password !== temp.confirm){
+            setMessage('Passwords do not match!');
             setShow(true)
             return;
         }
