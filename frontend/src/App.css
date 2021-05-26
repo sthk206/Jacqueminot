@@ -594,6 +594,7 @@ form {
 }
 
 
+
 /* .mentor-button:focus{
   background-color: #420000;
   border-color: rgb(255, 203, 30);
@@ -715,6 +716,27 @@ form {
     background-color: black;
     border-color: rgb(255, 203, 30);
     color: rgb(255, 203, 30);
+}
+
+/* Mentors */
+.message-button {
+    background-color: #420000;
+    color: white;
+    height: 450px;
+    width: 350px;
+    margin: 0 20px 0 20px;
+    transition: 0.5s;
+    border-color: black;
+}
+
+.linkedin-button {
+    background-color: #420000;
+    color: white;
+    height: 450px;
+    width: 350px;
+    margin: 0 20px 0 20px;
+    transition: 0.5s;
+    border-color: black;
 }
 
 

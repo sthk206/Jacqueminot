@@ -155,11 +155,11 @@ return (
             </p>
 
             <div className="profile-links">
-                <a href={user.fb} target="_blank" rel="noopener noreferrer">
+                <a href={validateFacebookURL(user.fb) ? user.fb : null} target="_blank" rel="noopener noreferrer">
                     <Button>Facebook</Button>
                 </a>
 
-                <a href={user.linkedin} target="_blank" rel="noopener noreferrer">
+                <a href={validateLinkedInURL(user.linkedin) ? user.linkedin : null} target="_blank" rel="noopener noreferrer">
                     <Button>LinkedIn</Button>
                 </a>
 
@@ -173,4 +173,22 @@ return (
 
     </div>
 );
+}
+
+function validateFacebookURL(url) {
+    if (/^(https?:\/\/)?((w{3}\.)?)facebook.com\/.*/i.test(url))
+     return true;
+    return false;
+}
+
+function createEmailURL(url) {
+    const emailLink = "mailto:" + url;
+    return emailLink;
+}
+
+function validateLinkedInURL(url) {
+    if( /(ftp|http|https):\/\/?(?:www\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test(url) ) {
+        return true;
+    }
+    return false;
 }

@@ -130,23 +130,32 @@ return (
                             <option >Structural Engineering</option>
                             <option >Math-Computer Science</option>
                             <option >Data Science</option>
-                            <option>Other</option>
+                            <option> Other </option>
                         </Form.Control>
                 </Form.Group>
 
-                <Form.Group as={Col} controlId="register2-year">
+                <Form.Group as={Col} controlId="register2-othermajor">
+                    <Form.Label>OTHER (if applicable)</Form.Label>
+                    <Form.Control {...register("otherMajor")} type="text" placeholder="Enter Major"/>
+                </Form.Group>
+                
+                {/* <Form.Group as={Col} controlId="register2-year">
                     <Form.Label>YEAR</Form.Label>
                     <Form.Control {...register("year")} type="year" placeholder="Enter Graduation Year" defaultValue={user.year} />
-                </Form.Group>
+                </Form.Group> */}
             </Form.Row>
 
+            <Form.Group controlId="register2-year">
+                    <Form.Label>YEAR</Form.Label>
+                    <Form.Control {...register("year")} type="year" placeholder="Enter Graduation Year" defaultValue={user.year} />
+            </Form.Group>
 
             <Form.Group controlId="register2-occupation">
                 <Form.Label>CURRENT OCCUPATION</Form.Label>
                 <Form.Control {...register("occupation")} type="text" placeholder="Student, Product Management, UI/UX Design, etc." defaultValue={user.occupation} />
             </Form.Group>
             <Form.Group controlId="register2-org">
-                <Form.Label>Organization</Form.Label>
+                <Form.Label>ORGANIZATION</Form.Label>
                 <Form.Control {...register("org")} type="text" placeholder="UC San Diego, Amazon, Google, etc." defaultValue={user.org}/>
             </Form.Group>
 
