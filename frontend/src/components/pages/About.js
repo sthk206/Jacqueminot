@@ -1,15 +1,24 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import rose from "../../images/rose7.jpeg";
 import HomeNavBar from "../misc/HomeNavBar.js";
+import NavBar from "../misc/NavBar.js";
+
 
 
 export default function About() {
- 
+    const [size, setSize] = useState(window.innerWidth);
+    useEffect( () => {
+        function updateSize() {
+            setSize(window.innerWidth);
+        }
+        window.addEventListener('resize', updateSize);
+        return () => window.removeEventListener('resize', updateSize);
+    }, [])
 
 return (
 
     <div className="home-container">
-        <HomeNavBar/>
+        {size < 895? <HomeNavBar/> : <NavBar/>}
         <div className="home-box">
             <img height="150" width="150" src={rose} alt=""/>
         </div>
