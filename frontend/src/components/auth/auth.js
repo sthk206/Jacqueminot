@@ -15,7 +15,6 @@ export const authenticate = (token, history) => {
 }
 
 export const getUser =  async (token) => {
-
     const tempUser = jwt.verify(token, JWT_SECRET);
     // let tempUser = token ? jwt.decode(token) : null;
     

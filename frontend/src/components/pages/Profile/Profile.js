@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import NavBar from "../../misc/NavBar.js";
+import HomeNavBar from "../../misc/HomeNavBar.js";
 import filler from "../../../images/filler.png"
 import {useHistory, useLocation} from 'react-router-dom';
 import Button from "react-bootstrap/Button";
@@ -10,13 +11,25 @@ const api = process.env.REACT_APP_API_URL;
 
 export default function Profile() {
     const [user, setUser] = useState({});
+    // const [layout, setLayout] = useState(this.getLayoutMode());
     const history = useHistory();
 
+    // const getLayoutMode = ()=>{
+    //     return window.innerWidth > 1000 ?
+    //         'desktop'
+    //         : 'mobile';
+    // }
 
+    const [size, setSize] = useState(window.innerWidth);
     useEffect( () => {
+        function updateSize() {
+            setSize(window.innerWidth);
+        }
+        window.addEventListener('resize', updateSize);
         let token = localStorage.getItem('token');
         let auth = authenticate(token, history);
         if(auth) {getUser(token).then(res => {setUser(res)});};
+        return () => window.removeEventListener('resize', updateSize);
     }, [])
 
 
@@ -66,10 +79,12 @@ export default function Profile() {
         
     };
 
+
+
 return (
     <div className="grid-container">
-        <NavBar/>
-
+        
+        {size < 887? <HomeNavBar/> : <NavBar/>}
         <div className="profile-base center">
             <img width="200px" height="200px" src={user.pfp ? `${api}/${user.pfp}` : filler} alt=""/>
             <div className="grid center">

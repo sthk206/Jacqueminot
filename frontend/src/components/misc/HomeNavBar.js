@@ -20,6 +20,7 @@ return (
         <img height="40" width="40" src={rose} alt=""/>
         <Navbar.Brand href="/">JACQUEMINOT</Navbar.Brand>
         <Nav className="ml-auto">
+            <Nav.Link href="/about">ABOUT US</Nav.Link>
             <Nav.Link onClick={logout}>LOGOUT</Nav.Link>
         </Nav>
         {/* <Form inline>

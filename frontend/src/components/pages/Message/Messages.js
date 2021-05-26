@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import NavBar from "../../misc/NavBar.js";
+import HomeNavBar from "../../misc/HomeNavBar.js";
 import filler from "../../../images/filler.png"
 import Button from "react-bootstrap/Button"
 import {useHistory, useLocation} from 'react-router-dom';
@@ -25,10 +26,16 @@ export default function Messages() {
         setBrothers(result);
     }
 
+    const [size, setSize] = useState(window.innerWidth);
     useEffect(() => {
+        function updateSize() {
+            setSize(window.innerWidth);
+        }
+        window.addEventListener('resize', updateSize);
         let token = localStorage.getItem('token');
         let auth = authenticate(token, history);
         if(auth) {getUser(token).then(res => {findBrothers(res._id)});}
+        return () => window.removeEventListener('resize', updateSize);
     }, [])
 
     const createBrother = (brother) => (
@@ -66,7 +73,7 @@ export default function Messages() {
 
 return (
     <div className="messages-wrapper">
-        <NavBar/>
+        {size < 895? <HomeNavBar/> : <NavBar/>}
         <h1 className="messages-title">Brothers of Theta Tau</h1>
         <div className="message-container">
 

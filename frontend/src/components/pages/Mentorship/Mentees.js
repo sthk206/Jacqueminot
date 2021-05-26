@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import NavBar from "../../misc/NavBar.js";
+import HomeNavBar from "../../misc/HomeNavBar.js";
 import filler from "../../../images/filler.png"
 import Button from "react-bootstrap/Button"
 import { Form } from 'react-bootstrap';
@@ -32,11 +33,18 @@ export default function Mentees() {
         setMentees(result);
       
     }
-     useEffect(() => {
-         let token = localStorage.getItem('token');
-         let auth = authenticate(token, history);
-         if(auth) {getUser(token).then(res => {findMentees(res._id)});}
-     }, [])
+
+    const [size, setSize] = useState(window.innerWidth);
+    useEffect(() => {
+        function updateSize() {
+            setSize(window.innerWidth);
+        }
+        window.addEventListener('resize', updateSize);
+        let token = localStorage.getItem('token');
+        let auth = authenticate(token, history);
+        if(auth) {getUser(token).then(res => {findMentees(res._id)});}
+        return () => window.removeEventListener('resize', updateSize);
+    }, [])
 
     const createMentee = (mentee) => (
         <div className="mentor-placard">
@@ -81,7 +89,7 @@ export default function Mentees() {
 
 return (
     <div className="mentor-container">
-        <NavBar/>
+        {size < 895? <HomeNavBar/> : <NavBar/>}
         <h1 className="mentor">Mentees</h1>
         <Form.Group controlId="mentors-filter">
                     <Form.Label> MAJOR</Form.Label>

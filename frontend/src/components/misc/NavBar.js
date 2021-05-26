@@ -24,6 +24,7 @@ return (
             <Nav.Link href="/mentorship">MENTORSHIP</Nav.Link>
             <Nav.Link href="/trees">FAMILY TREES</Nav.Link>
             <Nav.Link href="/messages">MESSAGE</Nav.Link>
+            <Nav.Link href="/about">ABOUT US</Nav.Link>
             <Nav.Link onClick={logout}>LOGOUT</Nav.Link>
         </Nav>
         {/* <Form inline>

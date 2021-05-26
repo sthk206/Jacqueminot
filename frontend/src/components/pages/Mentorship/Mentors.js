@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import NavBar from "../../misc/NavBar.js";
+import HomeNavBar from "../../misc/HomeNavBar.js";
 import filler from "../../../images/filler.png"
 import Button from "react-bootstrap/Button"
 import { Form } from 'react-bootstrap';
@@ -32,12 +33,19 @@ export default function Mentors() {
         setId(id)
         setMentors(result);
     }
+    
+    const [size, setSize] = useState(window.innerWidth);
+    useEffect(() => {
 
-     useEffect(() => {
-         let token = localStorage.getItem('token');
-         let auth = authenticate(token, history);
-         if(auth) {getUser(token).then(res => {findMentors(res._id)});};
-     }, [])
+        function updateSize() {
+            setSize(window.innerWidth);
+        }
+        window.addEventListener('resize', updateSize);
+        let token = localStorage.getItem('token');
+        let auth = authenticate(token, history);
+        if(auth) {getUser(token).then(res => {findMentors(res._id)});};
+        return () => window.removeEventListener('resize', updateSize);
+    }, [])
 
     const createMentor = (mentor) => (
         <div className="mentor-placard">
@@ -82,7 +90,7 @@ export default function Mentors() {
 
 return (
     <div className="mentor-container">
-        <NavBar/>
+        {size < 895? <HomeNavBar/> : <NavBar/>}
 
         <h1 className="mentor">Mentors</h1>
         <Form.Group controlId="mentors-filter">
