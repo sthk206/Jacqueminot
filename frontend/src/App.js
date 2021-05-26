@@ -19,6 +19,7 @@ import Profile from "./components/pages/Profile/Profile";
 import EditProfile from "./components/pages/Profile/EditProfile";
 import OtherProfile from "./components/pages/Profile/OtherProfile";
 import ForgotPassword from "./components/auth/ForgotPassword";
+import ResetPassword from "./components/auth/EnterNewPass";
 
 import './App.css';
 function App() {
@@ -44,6 +45,7 @@ function App() {
               <Route path='/otherProfile/:id' component={OtherProfile} />
               <Route path='/register2' component={Register2} />
               <Route path='/fp' component={ForgotPassword} />
+              <Route path='/reset/:token' component={ResetPassword} />
               {/* <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
               <Route path='/reset/:id' component={ResetPassword} /> */}

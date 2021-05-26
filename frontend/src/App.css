@@ -227,38 +227,47 @@ form {
 }
 
 
-/*Login*/
+/* Login/ForgetPassword */
 
-.login-form {
+.input-form {
     width: 40%;
     margin-top: 20px;
 }
 
-.login-form label {
+.input-form label {
     color: white;
 }
 
-.login-form button {
+.input-form button {
     border-color: white;
     color: white;
 }
 
-.login-form button:hover {
+.input-form button:hover {
     border-color: rgb(255, 203, 30);
     color: rgb(255, 203, 30);
     background-color: black;
 }
 
-.login-form a {
-    color: white;
-    float: right;
-    margin-top: 6px;
+.input-form .form-buttons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
 
-.login-form a.homelink {
-    color: white;
-    float: right;
-    margin-top: 0px;
+.input-form .form-buttons [type="submit"] {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.input-form .form-buttons a {
+    width: 48%;
+    margin-bottom: 1rem;
+    margin: 0;
+}
+
+.input-form .form-buttons a button {
+    width: 100%;
 }
 
 
@@ -286,16 +295,13 @@ form {
     background-color: black;
 }
 
-.register-form a {
-    color: white;
-    float: right;
-    margin-top: 6px;
+.register-form .form-buttons a {
+    width: 100%;
+    margin: 0;
 }
 
-.register-form a.link {
-    color: white;
-    float: right;
-    margin-top: 0px;
+.register-form .form-buttons a button {
+    width: 100%;
 }
 
 
@@ -331,10 +337,25 @@ form {
     background-color: black;
 }
 
-.register2-form a {
-    color: white;
-    float: right;
-    margin-top: 0px;
+.register2-form .form-buttons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.register2-form .form-buttons [type="submit"] {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.register2-form .form-buttons a {
+    width: 48%;
+    margin: 0;
+}
+
+.register2-form .form-buttons a button {
+    width: 100%;
 }
 
 
@@ -525,8 +546,6 @@ form {
     align-self: center;
     justify-self: center;
 }
-
-
 
 .mentor-placard table {
     width: 100%;
