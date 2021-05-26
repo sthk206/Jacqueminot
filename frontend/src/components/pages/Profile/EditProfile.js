@@ -211,7 +211,7 @@ return (
 
             <Form.Group controlId="register2-linkedin">
                 <Form.Label>CHANGE PASSWORD</Form.Label>
-                <Form.Control minlength={6} style={{color:'black'}} label="wow" type="text" placeholder="Password"/>
+                <Form.Control minlength={6} type="password" style={{color:'black'}} label="wow" type="text" placeholder="Password"/>
             </Form.Group>
 
 

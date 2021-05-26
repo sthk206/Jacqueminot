@@ -34,8 +34,8 @@ export default function Mentors() {
     }
 
     //get all potential members  id or major??
-    const findMentors = async (user) => {
-        let major = encodeURIComponent(user.major)
+    const findMentors = async (user, major) => {
+        major = encodeURIComponent(major)
         console.log(`${api}/fullUser/findMentors/${major}`)
         const result = await fetch(`${api}/fullUser/findMentors/${major}`, {
           method: 'GET',
@@ -56,7 +56,8 @@ export default function Mentors() {
             setMentors(res);
             return res;
         })
-        
+       
+        console.log('hi');
         console.log(result);
         setId(user._id)
         // setMentors(result);
@@ -72,11 +73,17 @@ export default function Mentors() {
         let token = localStorage.getItem('token');
         let auth = authenticate(token, history);
         if(auth) {getUser(token).then(res => {
-            findMentors(res);
-            setMjr(res.major);
+            if(mjr === "Select Major..."){
+                setMjr(res.major);
+                findMentors(res, res.major);
+            }else{
+                findMentors(res, mjr);
+            }
         })};
         return () => window.removeEventListener('resize', updateSize);
-    }, [])
+    }, [mjr])
+
+    
 
     const createMentor = (mentor) => (
         <div className="mentor-placard">

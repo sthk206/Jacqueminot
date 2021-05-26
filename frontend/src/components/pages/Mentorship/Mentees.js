@@ -19,6 +19,7 @@ export default function Mentees() {
     // let tempData = {}
 
     const handleMjr = name2 => (temp) => {
+        console.log('bywe')
         setMjr(temp.target.value);
     }
 
@@ -48,8 +49,8 @@ export default function Mentees() {
     // }, [menteePfps])
 
 
-    const findMentees = async (user) => {
-        let major = encodeURIComponent(user.major)
+    const findMentees = async (user, major) => {
+        major = encodeURIComponent(major)
         console.log(`${api}/fullUser/findMentors/${major}`)
         const result = await fetch(`${api}/fullUser/findMentees/${major}`, {
           method: 'GET',
@@ -87,11 +88,15 @@ export default function Mentees() {
         let token = localStorage.getItem('token');
         let auth = authenticate(token, history);
         if(auth) {getUser(token).then(res => {
-            findMentees(res);
-            setMjr(res.major);
+            if(mjr === "Select Major..."){
+                setMjr(res.major);
+                findMentees(res, res.major);
+            }else{
+                findMentees(res, mjr);
+            }
         })};
         return () => window.removeEventListener('resize', updateSize);
-    }, [])
+    }, [mjr])
 
     const createMentee = (mentee) => (
         <div className="mentor-placard">
