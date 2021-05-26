@@ -14,23 +14,64 @@ export default function Mentees() {
     const history = useHistory();
     const [mjr, setMjr] = useState("Select Major...");
     const [validated, setValidated] = useState(false);
+    const [menteePfps, setMenteePfps] = useState({});
 
     const handleMjr = name2 => (temp) => {
         setMjr(temp.target.value);
     }
 
-    const findMentees = async (id) => {
+    const getpfp = async (temp) => {
+        let url = encodeURIComponent(temp.pfp)
+        fetch(`${api}/fullUser/getUpload/${url}`)
+        .then( res => res.blob())
+        .then((data) => {
+            let imgURL = URL.createObjectURL(data);
+            console.log(imgURL)
+            let dat = menteePfps;
+            dat[temp.username] = imgURL;
+            setMenteePfps(dat);
+        })
+    }
 
-        const result = await fetch(`${api}/fullUser/findMentees/${id}`, {
+    useEffect(() => {
+        console.log(menteePfps);
+        let temp = {
+            username: "dhanvi@gmail.com"
+        }
+        console.log(menteePfps[temp.username])
+        console.log( (menteePfps[temp.username] !== undefined)  == true)
+        let name = temp.username;
+        console.log(menteePfps.name == undefined) 
+        console.log(menteePfps)
+    }, [menteePfps])
+
+
+    const findMentees = async (user) => {
+        let major = encodeURIComponent(user.major)
+        const result = await fetch(`${api}/fullUser/findMentees/${major}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
           }
-        }).then( res => res.json() );
-      
+        })
+        .then( res => res.json())
+        .then( res => {
+            const temp = {};
+
+            res.forEach(usr => {
+                if(usr.pfp){
+                    getpfp(usr);
+                }
+            })
+            setMenteePfps(temp)
+            setMentees(res);
+            return res;
+        });
+
+        console.log('hi');
         console.log(result);
-        setId(id);
-        setMentees(result);
+        setId(user._id);
+        // setMentees(result);
       
     }
 
@@ -42,13 +83,16 @@ export default function Mentees() {
         window.addEventListener('resize', updateSize);
         let token = localStorage.getItem('token');
         let auth = authenticate(token, history);
-        if(auth) {getUser(token).then(res => {findMentees(res._id)});}
+        if(auth) {getUser(token).then(res => {
+            findMentees(res);
+            setMjr(res.major);
+        })};
         return () => window.removeEventListener('resize', updateSize);
     }, [])
 
     const createMentee = (mentee) => (
         <div className="mentor-placard">
-            <img width="150px" height="150px" src={mentee.pfp ? `${api}/${mentee.pfp}` : filler} alt=""/>
+            <img width="150px" height="150px" src={(menteePfps[mentee.username] !== undefined) ? menteePfps[mentee.username] : filler} alt=""/>
             <div className="center2">
                 <h1>Brother {mentee.first} {mentee.last}</h1>
                 <table cellSpacing="0" cellPadding="0">
@@ -93,8 +137,8 @@ return (
         <h1 className="mentor">Mentees</h1>
         <Form.Group controlId="mentors-filter">
                     <Form.Label> MAJOR</Form.Label>
-                        <Form.Control isInvalid={validated && mjr === "Select Major..."} required as="select" defaultValue="Select Major..." value={mjr} onChange={handleMjr(mjr)}>
-                            <option disabled>Select Major...</option>
+                        <Form.Control required as="select" value={mjr} onChange={handleMjr(mjr)}>
+                            <option disabled>{mjr}</option>
                             <option>Aerospace Engineering</option>
                             <option>Bioengineering</option>
                             <option>Chemical Engineering</option>

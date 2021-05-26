@@ -34,7 +34,7 @@ export default function EditProfile() {
             return;
         }
 
-        console.log(data.target);
+        console.log(data);
 
         let count = -1;
         let body = new FormData();
@@ -51,7 +51,7 @@ export default function EditProfile() {
         body.append('additional', data.target[++count].value);
         body.append('fb', data.target[++count].value);
         body.append('linkedin', data.target[++count].value);
-        body.append('pfp', data.target[++count].value[0]);
+        body.append('pfp', data.target[++count].files[0]);
         body.append('password', data.target[++count].value); 
 
         // body.set('major', body.major ===  'other' ?  body.other : body.major);

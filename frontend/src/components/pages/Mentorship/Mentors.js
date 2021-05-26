@@ -14,24 +14,52 @@ export default function Mentors() {
     const history = useHistory();
     const [mjr, setMjr] = useState("Select Major...");
     const [validated, setValidated] = useState(false);
+    const [mentorPfps, setMentorPfps] = useState({});
 
     const handleMjr = name2 => (temp) => {
         setMjr(temp.target.value);
     }
 
-    //get all potential members
-    const findMentors = async (id) => {
-        console.log(`${api}/fullUser/findMentors/${id}`)
-        const result = await fetch(`${api}/fullUser/findMentors/${id}`, {
+    const getpfp = async (temp) => {
+        let url = encodeURIComponent(temp.pfp)
+        fetch(`${api}/fullUser/getUpload/${url}`)
+        .then( res => res.blob())
+        .then((data) => {
+            let imgURL = URL.createObjectURL(data);
+            console.log(imgURL)
+            let dat = mentorPfps;
+            dat[temp.username] = imgURL;
+            setMentorPfps(dat);
+        })
+    }
+
+    //get all potential members  id or major??
+    const findMentors = async (user) => {
+        let major = encodeURIComponent(user.major)
+        console.log(`${api}/fullUser/findMentors/${major}`)
+        const result = await fetch(`${api}/fullUser/findMentors/${major}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
           }
-        }).then( res => res.json() );
-      
+        })
+        .then( res => res.json() )
+        .then( res => {
+            const temp = {};
+
+            res.forEach(usr => {
+                if(usr.pfp){
+                    getpfp(usr);
+                }
+            })
+            setMentorPfps(temp)
+            setMentors(res);
+            return res;
+        })
+        
         console.log(result);
-        setId(id)
-        setMentors(result);
+        setId(user._id)
+        // setMentors(result);
     }
     
     const [size, setSize] = useState(window.innerWidth);
@@ -43,13 +71,16 @@ export default function Mentors() {
         window.addEventListener('resize', updateSize);
         let token = localStorage.getItem('token');
         let auth = authenticate(token, history);
-        if(auth) {getUser(token).then(res => {findMentors(res._id)});};
+        if(auth) {getUser(token).then(res => {
+            findMentors(res);
+            setMjr(res.major);
+        })};
         return () => window.removeEventListener('resize', updateSize);
     }, [])
 
     const createMentor = (mentor) => (
         <div className="mentor-placard">
-            <img width="150px" height="150px" src={mentor.pfp ? `${api}/${mentor.pfp}` : filler} alt=""/>
+            <img width="150px" height="150px" src={(mentorPfps[mentor.username] !== undefined) ? mentorPfps[mentor.username] : filler} alt=""/>
 
             <div className="center2">
                 <h1>Brother {mentor.first} {mentor.last}</h1>
@@ -111,8 +142,8 @@ return (
         <h1 className="mentor">Mentors</h1>
         <Form.Group controlId="mentors-filter">
                     <Form.Label> MAJOR</Form.Label>
-                        <Form.Control isInvalid={validated && mjr === "Select Major..."} required as="select" defaultValue="Select Major..." value={mjr} onChange={handleMjr(mjr)}>
-                            <option disabled>Select Major...</option>
+                        <Form.Control required as="select"  value={mjr} onChange={handleMjr(mjr)}>
+                            <option disabled>{mjr}</option>
                             <option>Aerospace Engineering</option>
                             <option>Bioengineering</option>
                             <option>Chemical Engineering</option>
