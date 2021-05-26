@@ -5,8 +5,9 @@ import Button from "react-bootstrap/Button";
 import {useHistory} from 'react-router-dom';
 import { Form, Toast } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
-import { useFormik } from 'formik';
 const api = process.env.REACT_APP_API_URL
+const api2 = process.env.REACT_APP_JWT_SECRET
+const key = process.env.REACT_APP_EXCLUSIVE_TOKEN
 
 export default function Register() {
     const history = useHistory();
@@ -24,6 +25,7 @@ export default function Register() {
             e.stopPropagation();
             return;
         }
+        
 
         const temp = {
             first: e.target[0].value,
@@ -31,6 +33,13 @@ export default function Register() {
             email: e.target[2].value,
             password: e.target[3].value,
             confirm: e.target[4].value,
+            key: e.target[5].value
+        }
+
+        if(temp.key != key){
+            setMessage('Invalid authenticaltion token.');
+            setShow(true)
+            return;
         }
         
         //check email
@@ -139,8 +148,13 @@ return (
                 <Form.Control required minLength={6} type="password" placeholder="Re-Enter password"/>
                 <Form.Control.Feedback type="invalid">Re-type your psasword</Form.Control.Feedback>
             </Form.Group>
+            <Form.Group controlId="token">
+                <Form.Label>Authentication Token</Form.Label>
+                <Form.Control required minLength={6} type="password" placeholder="Request this token from a Theta Tau Active"/>
+                <Form.Control.Feedback type="invalid">Authentication Token Required</Form.Control.Feedback>
+            </Form.Group>
 
-            <div class="form-buttons">
+            <div className="form-buttons">
                 <Button variant="outline-dark" type="submit"> 
                     CONTINUE
                 </Button>

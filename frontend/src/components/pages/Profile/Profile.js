@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import NavBar from "../../misc/NavBar.js";
-import filler from "../../../images/rose7.jpeg"
+import filler from "../../../images/rose7.jpeg";
+import HomeNavBar from "../../misc/HomeNavBar.js";
 import {useHistory, useLocation} from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
@@ -10,31 +11,41 @@ const api = process.env.REACT_APP_API_URL;
 
 export default function Profile() {
     const [user, setUser] = useState({});
+    // const [layout, setLayout] = useState(this.getLayoutMode());
     const history = useHistory();
     const [pfp, setPfp] = useState(null);
 
+    // const getLayoutMode = ()=>{
+    //     return window.innerWidth > 1000 ?
+    //         'desktop'
+    //         : 'mobile';
+    // }
 
+    const [size, setSize] = useState(window.innerWidth);
     useEffect( () => {
+        function updateSize() {
+            setSize(window.innerWidth);
+        }
+        window.addEventListener('resize', updateSize);
         let token = localStorage.getItem('token');
         let auth = authenticate(token, history);
-        if(auth) {getUser(token).then(res => {
-
-            getpfp(res);
-            setUser(res);
-        });
+        if(auth) {getUser(token)
+            .then( res => {
+                getpfp(res);
+                setUser(res);
+            });
         };
+        return () => window.removeEventListener('resize', updateSize);
     }, []);
 
     const getpfp = async (temp) => {
-        const result = fetch(`${api}/fullUser/getUpload/${temp.pfp}`).
+        fetch(`${api}/fullUser/getUpload/${temp.pfp}`).
         then( res => res.blob())
         .then((data) => {
             let imgURL = URL.createObjectURL(data);
             setPfp(imgURL);
         })
     }
-
-
 
     const updateBeMentee = async (e) => {
         console.log(e);
@@ -81,8 +92,8 @@ export default function Profile() {
 
 return (
     <div className="grid-container">
-        <NavBar/>
-
+        
+        {size < 887? <HomeNavBar/> : <NavBar/>}
         <div className="profile-base center">
             <img width="200px" height="200px" src={pfp ? pfp : filler} alt=""/>
             <div className="grid center">
@@ -153,11 +164,11 @@ return (
             </p>
 
             <div className="profile-links">
-                <a href={user.fb} target="_blank" rel="noopener noreferrer">
+                <a href={validateFacebookURL(user.fb) ? user.fb : null} target="_blank" rel="noopener noreferrer">
                     <Button>Facebook</Button>
                 </a>
 
-                <a href={user.linkedin} target="_blank" rel="noopener noreferrer">
+                <a href={validateLinkedInURL(user.linkedin) ? user.linkedin : null} target="_blank" rel="noopener noreferrer">
                     <Button>LinkedIn</Button>
                 </a>
 
@@ -171,4 +182,22 @@ return (
 
     </div>
 );
+}
+
+function validateFacebookURL(url) {
+    if (/^(https?:\/\/)?((w{3}\.)?)facebook.com\/.*/i.test(url))
+     return true;
+    return false;
+}
+
+function createEmailURL(url) {
+    const emailLink = "mailto:" + url;
+    return emailLink;
+}
+
+function validateLinkedInURL(url) {
+    if( /(ftp|http|https):\/\/?(?:www\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test(url) ) {
+        return true;
+    }
+    return false;
 }

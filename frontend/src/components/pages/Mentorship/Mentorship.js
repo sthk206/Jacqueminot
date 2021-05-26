@@ -1,12 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 // import rose from "../../images/rose7.jpeg";
-import rose from "../../../images/rose7.jpeg";
-import mentor from "../../../images/mentor.svg";
-import user from "../../../images/user.svg";
-import tree from "../../../images/tree.svg";
-import chat from "../../../images/chat.svg";
+
 import Button from "react-bootstrap/Button";
 import NavBar from "../../misc/NavBar.js";
+import HomeNavBar from "../../misc/HomeNavBar.js";
 import {useHistory} from 'react-router-dom';
 import { authenticate } from '../../auth/auth.js'
 
@@ -15,14 +12,20 @@ export default function Mentorship() {
     const redirectMentors = () => history.push('/mentors');
     const redirectMentees = () => history.push('/mentees');
 
+    const [size, setSize] = useState(window.innerWidth);
     useEffect( () => {
+        function updateSize() {
+            setSize(window.innerWidth);
+        }
+        window.addEventListener('resize', updateSize);
         let token = localStorage.getItem('token');
         authenticate(token, history);
+        return () => window.removeEventListener('resize', updateSize);
     }, [])
 
 return (
     <div className="home-container">
-        <NavBar/>
+        {size < 895? <HomeNavBar/> : <NavBar/>}
 
         <div className="home-box">
             <Button onClick={redirectMentors} variant="dark" className="mentorship-button">

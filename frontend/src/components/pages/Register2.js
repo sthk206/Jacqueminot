@@ -198,7 +198,7 @@ return (
                 <Form.Control.Feedback type="invalid">Please enter a link to your LinkedIn profile</Form.Control.Feedback>
             </Form.Group>
 
-            <div class="form-buttons">
+            <div className="form-buttons">
                 <Button variant="outline-dark" type="submit"> 
                     SIGN UP
                 </Button>

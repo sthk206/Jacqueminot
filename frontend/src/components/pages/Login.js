@@ -107,7 +107,7 @@ return (
             </Form.Group>
 
 
-            <div class="form-buttons">
+            <div className="form-buttons">
                 <Button variant="outline-dark" type="submit"> 
                     LOGIN
                 </Button>
