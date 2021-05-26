@@ -937,6 +937,11 @@ form {
     align-items: center;
 }
 
+@media screen and (max-width: 707px) {
 
+    .family-button {
+        min-width: 115px;
+    }
+}
 
 
