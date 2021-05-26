@@ -11,7 +11,7 @@ const key = process.env.REACT_APP_EXCLUSIVE_TOKEN
 
 export default function Register() {
     const history = useHistory();
-    const [validated, setValidated] = useState(false)
+    const [validated, setValidated] = useState(false);
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState('');
 
@@ -37,7 +37,7 @@ export default function Register() {
         }
 
         if(temp.key != key){
-            setMessage('Invalid authenticaltion token.');
+            setMessage('Invalid authentication token.');
             setShow(true)
             return;
         }
@@ -150,7 +150,7 @@ return (
             </Form.Group>
             <Form.Group controlId="token">
                 <Form.Label>Authentication Token</Form.Label>
-                <Form.Control required minLength={6} type="password" placeholder="Request this token from a Theta Tau Active"/>
+                <Form.Control required type="password" placeholder="Request this token from a Theta Tau Active"/>
                 <Form.Control.Feedback type="invalid">Authentication Token Required</Form.Control.Feedback>
             </Form.Group>
 

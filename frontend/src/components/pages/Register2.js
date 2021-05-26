@@ -157,7 +157,7 @@ return (
                             <option>Structural Engineering</option>
                             <option>Math-Computer Science</option>
                             <option>Data Science</option>
-                            <option>Other (Please manually edit your major in the Edit Profle page)</option>
+                            <option>Other</option>
                         </Form.Control>
                         <Form.Control.Feedback type="invalid">Please select a major</Form.Control.Feedback>
                 </Form.Group>

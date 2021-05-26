@@ -31,7 +31,9 @@ export default function Profile() {
         let auth = authenticate(token, history);
         if(auth) {getUser(token)
             .then( res => {
-                getpfp(res);
+                if(res.pfp){
+                    getpfp(res);
+                }
                 setUser(res);
             });
         };
@@ -140,7 +142,7 @@ return (
                     </tr>
                     <tr>
                         <td><em>Major:</em></td>
-                        <td>{user.major}</td>
+                        <td>{user.major !== 'Other' ? user.major : user.other}</td>
                     </tr>
                     <tr>
                         <td><em>Graduation Year:</em></td>
