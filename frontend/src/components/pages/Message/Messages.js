@@ -11,6 +11,20 @@ export default function Messages() {
     const [brothers, setBrothers] = useState([]);
     const [id, setId] = useState("");
     const history = useHistory();
+    const [brotherPfps, setBrotherPfps] = useState({});
+
+    const getpfp = async (temp) => {
+        let url = encodeURIComponent(temp.pfp)
+        fetch(`${api}/fullUser/getUpload/${url}`)
+        .then( res => res.blob())
+        .then((data) => {
+            let imgURL = URL.createObjectURL(data);
+            console.log(imgURL)
+            let dat = brotherPfps;
+            dat[temp.username] = imgURL;
+            setBrotherPfps(dat);
+        })
+    }
 
     const findBrothers = async (id) => {
 
@@ -19,11 +33,25 @@ export default function Messages() {
           headers: {
             'Content-Type': 'application/json'
           }
-        }).then( res => res.json() );
+        })
+        .then( res => res.json() )
+        .then(res => {
+            const temp = {};
+
+            res.forEach(usr => {
+                if(usr.pfp){
+                    getpfp(usr);
+                }
+            })
+            setBrotherPfps(temp)
+            setBrothers(res);
+            return res;
+
+        }) 
       
         console.log(result);
         setId(id);
-        setBrothers(result);
+        // setBrothers(result);
     }
 
     const [size, setSize] = useState(window.innerWidth);
@@ -40,7 +68,7 @@ export default function Messages() {
 
     const createBrother = (brother) => (
         <div className="messages-placard">
-            <img width="150px" height="150px" src={brother.pfp ? `${api}/${brother.pfp}` : filler} alt=""/>
+            <img width="150px" height="150px" src={(brotherPfps[brother.username] !== undefined) ? brotherPfps[brother.username] : filler} alt=""/>
             <div className="messages-div">
                 <h1>Brother {brother.first} {brother.last}</h1>
                 <table cellSpacing="0" cellPadding="0">

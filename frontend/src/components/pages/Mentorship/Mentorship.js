@@ -12,6 +12,7 @@ export default function Mentorship() {
     const redirectMentors = () => history.push('/mentors');
     const redirectMentees = () => history.push('/mentees');
 
+
     const [size, setSize] = useState(window.innerWidth);
     useEffect( () => {
         function updateSize() {

@@ -16,6 +16,8 @@ export default function Mentees() {
     const [validated, setValidated] = useState(false);
     const [menteePfps, setMenteePfps] = useState({});
 
+    // let tempData = {}
+
     const handleMjr = name2 => (temp) => {
         setMjr(temp.target.value);
     }
@@ -33,21 +35,22 @@ export default function Mentees() {
         })
     }
 
-    useEffect(() => {
-        console.log(menteePfps);
-        let temp = {
-            username: "dhanvi@gmail.com"
-        }
-        console.log(menteePfps[temp.username])
-        console.log( (menteePfps[temp.username] !== undefined)  == true)
-        let name = temp.username;
-        console.log(menteePfps.name == undefined) 
-        console.log(menteePfps)
-    }, [menteePfps])
+    // useEffect(() => {
+    //     console.log(menteePfps);
+    //     let temp = {
+    //         username: "dhanvi@gmail.com"
+    //     }
+    //     console.log(menteePfps[temp.username])
+    //     console.log( (menteePfps[temp.username] !== undefined)  == true)
+    //     let name = temp.username;
+    //     console.log(menteePfps.name == undefined) 
+    //     console.log(menteePfps)
+    // }, [menteePfps])
 
 
     const findMentees = async (user) => {
         let major = encodeURIComponent(user.major)
+        console.log(`${api}/fullUser/findMentors/${major}`)
         const result = await fetch(`${api}/fullUser/findMentees/${major}`, {
           method: 'GET',
           headers: {
@@ -63,7 +66,7 @@ export default function Mentees() {
                     getpfp(usr);
                 }
             })
-            setMenteePfps(temp)
+            setMenteePfps(temp);
             setMentees(res);
             return res;
         });
