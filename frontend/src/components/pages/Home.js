@@ -15,11 +15,11 @@ export default function Home() {
     const redirectProfile = () => history.push('/profile');
     const redirectMessages = () => history.push('/messages');
 
-    useEffect( () => {
-        let token = localStorage.getItem('token');
-        console.log(token); 
-        authenticate(token, history);
-    }, []);
+    // useEffect( () => {
+    //     let token = localStorage.getItem('token');
+    //     console.log(token); 
+    //     authenticate(token, history);
+    // }, []);
 
 return (
 
