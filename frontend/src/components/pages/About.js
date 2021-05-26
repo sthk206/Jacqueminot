@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import rose from "../../images/rose7.jpeg";
 import HomeNavBar from "../misc/HomeNavBar.js";
+import NavBar from "../misc/NavBar.js";
 
 
 export default function About() {
@@ -9,7 +10,7 @@ export default function About() {
 return (
 
     <div className="home-container">
-        <HomeNavBar/>
+        <NavBar/>
         <div className="home-box">
             <img height="150" width="150" src={rose} alt=""/>
         </div>
