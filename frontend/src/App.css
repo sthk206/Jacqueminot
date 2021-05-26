@@ -359,6 +359,17 @@ form {
 }
 
 
+/*Mentors*/
+.mentor-container label {
+    color: white;
+}
+
+/*Mentees*/
+.mentee-container label {
+    color: white;
+}
+
+
 /*Profile*/
 
 .grid-container {

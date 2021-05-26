@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import NavBar from "../../misc/NavBar.js";
 import filler from "../../../images/filler.png"
 import Button from "react-bootstrap/Button"
+import { Form } from 'react-bootstrap';
 import { authenticate, getUser } from '../../auth/auth.js'
 import {useHistory, useLocation} from 'react-router-dom'
 const api = process.env.REACT_APP_API_URL;
@@ -10,6 +11,12 @@ export default function Mentees() {
     const [mentees, setMentees] = useState([]);
     const [id, setId] = useState(1);
     const history = useHistory();
+    const [mjr, setMjr] = useState("Select Major...");
+    const [validated, setValidated] = useState(false);
+
+    const handleMjr = name2 => (temp) => {
+        setMjr(temp.target.value);
+    }
 
     const findMentees = async (id) => {
 
@@ -25,11 +32,11 @@ export default function Mentees() {
         setMentees(result);
       
     }
-    useEffect(() => {
-        let token = localStorage.getItem('token');
-        let auth = authenticate(token, history);
-        if(auth) {getUser(token).then(res => {findMentees(res._id)});}
-    }, [])
+     useEffect(() => {
+         let token = localStorage.getItem('token');
+         let auth = authenticate(token, history);
+         if(auth) {getUser(token).then(res => {findMentees(res._id)});}
+     }, [])
 
     const createMentee = (mentee) => (
         <div className="mentor-placard">
@@ -76,7 +83,25 @@ return (
     <div className="mentor-container">
         <NavBar/>
         <h1 className="mentor">Mentees</h1>
-
+        <Form.Group controlId="mentors-filter">
+                    <Form.Label> MAJOR</Form.Label>
+                        <Form.Control isInvalid={validated && mjr === "Select Major..."} required as="select" defaultValue="Select Major..." value={mjr} onChange={handleMjr(mjr)}>
+                            <option disabled>Select Major...</option>
+                            <option>Aerospace Engineering</option>
+                            <option>Bioengineering</option>
+                            <option>Chemical Engineering</option>
+                            <option>Computer Science</option>
+                            <option>Computer Engineering</option>
+                            <option>Electrical Engineering</option>
+                            <option>Environmental Engineering</option>
+                            <option>Mechanical Engineering</option>
+                            <option>Structural Engineering</option>
+                            <option>Math-Computer Science</option>
+                            <option>Data Science</option>
+                            <option>Other</option>
+                        </Form.Control>
+                        <Form.Control.Feedback type="invalid">Please select a major</Form.Control.Feedback>
+        </Form.Group>
         {mentees.map((mentee) => mentee._id !== id ? createMentee(mentee) : null )}
 
 
