@@ -41,10 +41,12 @@ export default function Profile() {
     }, []);
 
     const getpfp = async (temp) => {
-        fetch(`${api}/fullUser/getUpload/${temp.pfp}`).
-        then( res => res.blob())
+        let url = encodeURIComponent(temp.pfp)
+        fetch(`${api}/fullUser/getUpload/${url}`)
+        .then( res => res.blob())
         .then((data) => {
             let imgURL = URL.createObjectURL(data);
+            console.log(imgURL);
             setPfp(imgURL);
         })
     }

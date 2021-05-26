@@ -14,7 +14,7 @@ export default function Login() {
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState('');
     const [toLogin, setLogin] = useState(false);
-
+    console.log(api);
     const login = async (e) => {
         e.preventDefault();
 
