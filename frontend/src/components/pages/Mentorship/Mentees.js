@@ -19,7 +19,6 @@ export default function Mentees() {
     // let tempData = {}
 
     const handleMjr = name2 => (temp) => {
-        console.log('bywe')
         setMjr(temp.target.value);
     }
 
