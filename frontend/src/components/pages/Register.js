@@ -10,10 +10,13 @@ const api2 = process.env.REACT_APP_JWT_SECRET
 const key = process.env.REACT_APP_EXCLUSIVE_TOKEN
 
 export default function Register() {
+
     const history = useHistory();
     const [validated, setValidated] = useState(false);
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState('');
+    const redirectLogin = () => history.push('/login');
+
 
     //move to second page
     const moveOn = async (e) => {
@@ -159,7 +162,7 @@ return (
                     CONTINUE
                 </Button>
 
-                <a href="/login">
+                <a onClick={redirectLogin}>
                     <Button variant="outline-dark"> 
                         RETURN TO LOGIN
                     </Button>

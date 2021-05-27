@@ -12,7 +12,8 @@ export default function ForgotPassword() {
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState('');
     const [login, setLogin] = useState(false);
-
+    const redirectRegister = () => history.push('/register');
+    const redirectLogin = () => history.push('/login');
     const handleChange = name => (event) => {
         setEmail(event.target.value);
     };
@@ -107,13 +108,13 @@ return (
                     SEND PASSWORD REQUEST
                 </Button>
 
-                <a href="/login">
+                <a onClick={redirectLogin}>
                     <Button variant="outline-dark"> 
                         LOGIN
                     </Button>
                 </a>
 
-                <a href="/register">
+                <a onClick={redirectRegister}>
                     <Button variant="outline-dark"> 
                         REGISTER
                     </Button>

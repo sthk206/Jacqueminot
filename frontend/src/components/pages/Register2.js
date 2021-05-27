@@ -12,7 +12,9 @@ export default function Register2() {
     const history = useHistory();
     const location = useLocation();
     const redirectRegister = () => history.push('/register');
+    const redirectLogin = () => history.push('/login');
     const [validated, setValidated] = useState(false);
+
 
     const [cls, setCls] = useState("Select Class...");
     const [fm, setFmm] = useState("Select Family...")
@@ -209,7 +211,7 @@ return (
                     </Button>
                 </a>
 
-                <a href="/login">
+                <a onClick={redirectLogin}>
                     <Button variant="outline-dark"> 
                         RETURN TO LOGIN
                     </Button>
