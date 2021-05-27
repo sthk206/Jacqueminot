@@ -3,7 +3,8 @@ import { Form, Toast } from 'react-bootstrap'
 import Button from "react-bootstrap/Button";
 import rose from "../../images/rose7.jpeg"
 import {useHistory, useLocation} from 'react-router-dom';
-const api = process.env.REACT_APP_API_URL
+const api = process.env.REACT_APP_API_URL;
+// const api = "http://localhost:5000";
 
 export default function ForgotPassword() {
     const history = useHistory();
@@ -28,18 +29,30 @@ export default function ForgotPassword() {
             return;
         }
 
+        // console.log(email);
+        // console.log(e.target[0].value);
+
+        // let body = new FormData();
+        // body.append('username', email )
+
         const fp = await fetch(`${api}/fullUser/fp`, {
             method: 'POST',
             headers: {
+                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 username: email
             })
-            }).then( res => res.json())
-            .catch(err => {
+        }).then( res => res.json())
+        .catch(err => {
                 alert(err);
+                setMessage('Email Sent!');
+                setLogin(false);
+                setShow(true);
         });
+
+        console.log(fp)
 
         if(fp.success){
             setMessage('Email Sent!');

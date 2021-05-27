@@ -191,7 +191,7 @@ return (
 
             <Form.Group controlId="register2-facebook">
                 <Form.Label>FACEBOOK PROFILE</Form.Label>
-                <Form.Control required type="text" placeholder="https://www.facebook.com/xxxxxxx" />
+                <Form.Control type="text" placeholder="https://www.facebook.com/xxxxxxx" />
                 <Form.Control.Feedback type="invalid">Please enter a link to your Facebook profile</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="register2-linkedin">
