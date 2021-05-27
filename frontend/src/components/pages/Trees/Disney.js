@@ -28,7 +28,7 @@ return (
 
     <div className="home-container">
         {size < 895? <HomeNavBar/> : <NavBar/>}
-        <div className="fam" style={{overflow:"scroll"}}>
+        <div className="fam" style={{overflow:"hidden"}}>
             <Document 
             file={disney} 
             options={{workerSrc: "pdf.worker.js"}}  
