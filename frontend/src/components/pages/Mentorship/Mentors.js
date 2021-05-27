@@ -148,7 +148,7 @@ return (
 
         <h1 className="mentor">Mentors</h1>
         <Form.Group controlId="mentors-filter">
-                    <Form.Label> MAJOR</Form.Label>
+                    <Form.Label> FILTER BY MAJOR</Form.Label>
                         <Form.Control required as="select"  value={mjr} onChange={handleMjr(mjr)}>
                             <option disabled>{mjr}</option>
                             <option>Aerospace Engineering</option>
